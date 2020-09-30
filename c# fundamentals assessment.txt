@@ -1,0 +1,434 @@
+armstrong umber or not
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace armstrong
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            int val = 212, sum = 0;
+            int rem;
+            // check for armstrong(371, 27+343+1=371)
+            for (int i = val; i > 0; i = i / 10)
+            {
+                rem = i % 10;
+                sum = sum + rem * rem * rem;
+            }
+            if (sum == val)
+            {
+                Console.Write("Armstrong Number");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.Write("Not an Armstrong Number");
+                Console.ReadLine();
+            }
+          
+
+        }
+    }
+}
+
+
+ascending order
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ascending_order
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int[] arr = { 3,6,8888,4,8,4,3};
+            int temp;
+            for (int j = 0; j <= arr.Length - 2; j++)
+            {
+                for (int i = 0; i <= arr.Length - 2; i++)
+                {
+                    if (arr[i] > arr[i + 1])
+                    {
+                        temp = arr[i + 1];
+                        arr[i + 1] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
+            }
+            Console.WriteLine("ascending order:");
+            foreach (int a in arr)
+                Console.Write(a + " ");
+            Console.Read();
+
+
+        }
+    }
+}
+
+
+remove duplicate elements
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace toremoveduplicate
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = { 1, 2, 3, 4, 5, 2 };
+
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = i + 1; j < arr.Length; j++)
+                {
+                    if (arr[i] == arr[j])
+
+                    {
+
+                        Console.WriteLine(arr[i]);
+                        Console.Read();
+
+                    }
+
+
+                }
+
+
+            }
+
+
+        }
+    }
+}
+
+first 10 natural numbers
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace first10_naturalnumbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i;
+           
+            Console.WriteLine("The first 10 natural number are:");
+
+            for (i = 1; i <= 10; i++)
+            {
+                Console.Write("{0} ", i);
+            }
+            Console.Write("\n\n");
+            Console.Read();
+
+        }
+    }
+}
+
+
+
+
+first 10 even numbers
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace first10_even
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            int i = 0;
+
+            Console.WriteLine("Even Numbers :");
+            for (i = 1; i <= 10; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.Write(i + " ");
+                }
+            }
+
+            Console.WriteLine();
+            Console.Read();
+
+        }
+    }
+}
+
+
+
+
+prime numbers between the range
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace prime_2_100
+{
+    class Program
+    {
+        static void Main()
+        {
+            //Declaration  
+            bool isPrime = true;
+            int i, j;
+
+            //Calculate and display the Prime number  
+            Console.WriteLine("Prime Numbers are : ");
+            for (i = 2; i <= 100; i++)
+            {
+                for (j = 2; j <= 100; j++)
+                {
+                    if (i != j && i % j == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime)
+                {
+                    Console.Write("\t" + i);
+                }
+                isPrime = true;
+            }
+            Console.Read();
+        }
+    }
+}
+
+
+
+largest number in the array
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace largest.no_array
+{
+    class Program
+    {
+        public static void Main()
+        {
+            int[] arr = new int[5] { 99, 95, 93, 89, 87 };
+            int i,n, max;
+            // size of the array
+            n = 5;
+            max = arr[0];
+            
+            for (i = 1; i < n; i++)
+            {
+                if (arr[i] > max)
+                {
+                    max = arr[i];
+                }
+
+            }
+            Console.Write("largest number = {0}\n", max);
+            Console.Read();
+
+        }
+    }
+
+}
+
+
+number of times a character present
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace numoftimes_char
+{
+    class Program
+    {
+        static int kaumudi = 256;
+        static void calculate(String s, int[] cal)
+        {
+            for (int i = 0; i < s.Length; i++)
+                cal[s[i]]++;
+        }
+        public static void Main()
+        {
+            String s = "abusfjkvincsibyusvhuidx";
+            int[] cal = new int[kaumudi];
+            calculate(s, cal);
+            for (int i = 0; i < kaumudi; i++)
+            {
+                if (cal[i] > 1)
+                {
+                    Console.WriteLine("Character " + (char)i);
+                    Console.WriteLine("Occurrence = " + cal[i] + " times");
+                    Console.ReadLine();
+                }
+                if (cal[i] == 1)
+                {
+                    Console.WriteLine("Character " + (char)i);
+                    Console.WriteLine("Occurrence = " + cal[i] + " time");
+                    Console.ReadLine();
+                }
+            }
+        }
+    }
+
+multiplication table
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace multiplication_table
+{
+    class Program
+    {
+
+        public static void Main()
+        {
+            int n = 5, a = 1;
+
+            while (a <= 12)
+            {
+                Console.WriteLine(" {0} x {1} = {2} \n ", n, a, n * a);
+                
+                Console.ReadLine();
+                a++;
+            }
+        }
+    }
+}
+
+
+palindrome
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace palindrome
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            string string1, rev;
+            string1 = "Madam";
+
+            char[] ch = string1.ToCharArray();
+            Array.Reverse(ch);
+
+            rev = new string(ch);
+
+            bool b = string1.Equals(rev, StringComparison.OrdinalIgnoreCase);
+            if (b == true)
+            {
+                Console.WriteLine("" + string1 + " is a Palindrome!");
+            }
+            else
+            {
+                Console.WriteLine(" " + string1 + " is not a Palindrome!");
+            }
+            Console.Read();
+
+
+        }
+    }
+}
+
+
+
+
+prime or not
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace prime_or_not
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int n = 5, a = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                if (n % i == 0)
+                {
+                    a++;
+                }
+            }
+            if (a == 2)
+            {
+                Console.WriteLine("{0} is a Prime Number", n);
+            }
+            else
+            {
+                Console.WriteLine("Not a Prime Number");
+            }
+            Console.ReadLine();
+
+        }
+    }
+}
+
+
+
+
+
+    
+
+
+
