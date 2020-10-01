@@ -1,86 +1,6 @@
-armstrong umber or not
+C#-Fundamentals_1
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace armstrong
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-
-
-            int val = 212, sum = 0;
-            int rem;
-            // check for armstrong(371, 27+343+1=371)
-            for (int i = val; i > 0; i = i / 10)
-            {
-                rem = i % 10;
-                sum = sum + rem * rem * rem;
-            }
-            if (sum == val)
-            {
-                Console.Write("Armstrong Number");
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.Write("Not an Armstrong Number");
-                Console.ReadLine();
-            }
-          
-
-        }
-    }
-}
-
-
-ascending order
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ascending_order
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-
-            int[] arr = { 3,6,8888,4,8,4,3};
-            int temp;
-            for (int j = 0; j <= arr.Length - 2; j++)
-            {
-                for (int i = 0; i <= arr.Length - 2; i++)
-                {
-                    if (arr[i] > arr[i + 1])
-                    {
-                        temp = arr[i + 1];
-                        arr[i + 1] = arr[i];
-                        arr[i] = temp;
-                    }
-                }
-            }
-            Console.WriteLine("ascending order:");
-            foreach (int a in arr)
-                Console.Write(a + " ");
-            Console.Read();
-
-
-        }
-    }
-}
-
-
-remove duplicate elements
-
+/*1. write a program to remove duplicate elements from the array of integers*/
 
 using System;
 using System.Collections.Generic;
@@ -94,7 +14,7 @@ namespace toremoveduplicate
     {
         static void Main(string[] args)
         {
-            int[] arr = { 1, 2, 3, 4, 5, 2 };
+            int[] arr = { 1, 2, 3, 4, 5, 2 };// 2 is duplicate element 
 
 
             for (int i = 0; i < arr.Length; i++)
@@ -121,158 +41,14 @@ namespace toremoveduplicate
     }
 }
 
-first 10 natural numbers
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace first10_naturalnumbers
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            int i;
-           
-            Console.WriteLine("The first 10 natural number are:");
-
-            for (i = 1; i <= 10; i++)
-            {
-                Console.Write("{0} ", i);
-            }
-            Console.Write("\n\n");
-            Console.Read();
-
-        }
-    }
-}
 
 
 
 
-first 10 even numbers
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace first10_even
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-
-
-            int i = 0;
-
-            Console.WriteLine("Even Numbers :");
-            for (i = 1; i <= 10; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    Console.Write(i + " ");
-                }
-            }
-
-            Console.WriteLine();
-            Console.Read();
-
-        }
-    }
-}
 
 
 
-
-prime numbers between the range
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace prime_2_100
-{
-    class Program
-    {
-        static void Main()
-        {
-            //Declaration  
-            bool isPrime = true;
-            int i, j;
-
-            //Calculate and display the Prime number  
-            Console.WriteLine("Prime Numbers are : ");
-            for (i = 2; i <= 100; i++)
-            {
-                for (j = 2; j <= 100; j++)
-                {
-                    if (i != j && i % j == 0)
-                    {
-                        isPrime = false;
-                        break;
-                    }
-                }
-                if (isPrime)
-                {
-                    Console.Write("\t" + i);
-                }
-                isPrime = true;
-            }
-            Console.Read();
-        }
-    }
-}
-
-
-
-largest number in the array
-
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace largest.no_array
-{
-    class Program
-    {
-        public static void Main()
-        {
-            int[] arr = new int[5] { 99, 95, 93, 89, 87 };
-            int i,n, max;
-            // size of the array
-            n = 5;
-            max = arr[0];
-            
-            for (i = 1; i < n; i++)
-            {
-                if (arr[i] > max)
-                {
-                    max = arr[i];
-                }
-
-            }
-            Console.Write("largest number = {0}\n", max);
-            Console.Read();
-
-        }
-    }
-
-}
-
-
-number of times a character present
-
+/*2. write a program to count how many numbers of times eacg chracter appears in the given string*/
 
 
 using System;
@@ -314,8 +90,187 @@ namespace numoftimes_char
         }
     }
 
-multiplication table
 
+
+
+
+/*3.write a function to get largest number in the given array*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace largest.no_array
+{
+    class Program
+    {
+        public static void Main()
+        {
+            int[] arr = new int[5] { 99, 95, 93, 89, 87 };
+            int i,n, max;
+            // size of the array
+            n = 5;
+            max = arr[0];
+            
+            for (i = 1; i < n; i++)
+            {
+                if (arr[i] > max)
+                {
+                    max = arr[i];
+                }
+
+            }
+            Console.Write("largest number = {0}\n", max);
+            Console.Read();
+
+        }
+    }
+
+}
+
+
+
+
+
+/*4.write a program to find whether a given 3 digit number is an armstrong number or not*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace armstrong
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            int val = 212, sum = 0;
+            int rem;
+            // check for armstrong(371, 27+343+1=371)
+            for (int i = val; i > 0; i = i / 10)
+            {
+                rem = i % 10;
+                sum = sum + rem * rem * rem;
+            }
+            if (sum == val)
+            {
+                Console.Write("Armstrong Number");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.Write("Not an Armstrong Number");
+                Console.ReadLine();
+            }
+          
+
+        }
+    }
+}
+
+
+
+
+
+
+/*5.write a program to generate the first n terms in the series 1,8,27,64,125*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace to_print_cube_series
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            
+                int i, cube;
+               
+                Console.Write("enter the value of n : ");
+                cube = Convert.ToInt32(Console.ReadLine());
+                for (i = 1; i <= cube; i++)
+                {
+                    Console.Write("Number is : {0} and cube of the {1} is :{2} \n", i, i, (i * i * i));
+                    Console.ReadLine();
+                }
+            
+
+        }
+    }
+}
+
+
+
+/*6.write a program to generate the first n prime numbers in the series*/
+
+
+
+7,8,9-patterns
+
+
+/*10.write a program in take 10 integer in an array and sort in acsending order*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ascending_order
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int[] arr = {10,9,8,7,6,5,4,3,2,1};
+            int temp;
+            for (int j = 0; j <= arr.Length - 2; j++)
+            {
+                for (int i = 0; i <= arr.Length - 2; i++)
+                {
+                    if (arr[i] > arr[i + 1])
+                    {
+                        temp = arr[i + 1];
+                        arr[i + 1] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
+            }
+            Console.WriteLine("ascending order:");
+            foreach (int a in arr)
+                Console.Write(a + " ");
+            Console.Read();
+
+
+        }
+    }
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+C#-Fundamentals
+
+
+
+/*Requirement 1.write a program to print multiplication table of given number*/
 
 using System;
 using System.Collections.Generic;
@@ -344,7 +299,11 @@ namespace multiplication_table
 }
 
 
-palindrome
+
+
+/*Requirement 2. write a program to print if the given string string is palindrome or not*/
+
+
 
 using System;
 using System.Collections.Generic;
@@ -386,8 +345,8 @@ namespace palindrome
 
 
 
+/*2.write a program to take a integer as input and print the sum of diits of the number*/
 
-prime or not
 
 using System;
 using System.Collections.Generic;
@@ -395,14 +354,182 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace prime_or_not
+namespace sum_of_digits
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, sum = 0, m;
+            Console.Write("Enter a number: ");
+            n = int.Parse(Console.ReadLine());
+            while (n > 0)
+            {
+                m = n % 10;
+                sum = sum + m;
+                n = n / 10;
+            }
+            Console.Write("Sum is= " + sum);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+3,4
+
+
+
+
+
+
+
+/*5. write a program to print first 10 natural numbers*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace first10_naturalnumbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i;
+           
+            Console.WriteLine("The first 10 natural number are:");
+
+            for (i = 1; i <= 10; i++)
+            {
+                Console.Write("{0} ", i);
+            }
+            Console.Write("\n\n");
+            Console.Read();
+
+        }
+    }
+}
+
+
+
+
+
+
+/*6. write a program to print first 10 natural numbers in reverse order*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace rev_nat_num
 {
     class Program
     {
         static void Main(string[] args)
         {
 
-            int n = 5, a = 0;
+            int i;
+
+            Console.Write("the first 10 natural numbers in reverse order\n");
+          
+           
+            for (i = 10; i >= 1; i--)
+            {
+                Console.WriteLine("\n" + i);
+            }
+
+            Console.ReadLine();
+
+
+        }
+    }
+}
+
+
+
+
+
+
+/*7.wrtite a program to print first 10 even natural numbers*/
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace first10_even
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            int i = 0;
+
+            Console.WriteLine("Even Numbers :");
+            for (i = 1; i <= 10; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.Write(i + " ");
+                }
+            }
+
+            Console.WriteLine();
+            Console.Read();
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+8.
+
+
+
+
+
+
+
+
+9./* write a program to find whether the given number is prime or not*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace prime_or_not_p9_
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            int n = 10, a = 0;
             for (int i = 1; i <= n; i++)
             {
                 if (n % i == 0)
@@ -416,7 +543,7 @@ namespace prime_or_not
             }
             else
             {
-                Console.WriteLine("Not a Prime Number");
+                Console.WriteLine("{0} is not a Prime Number",n);
             }
             Console.ReadLine();
 
@@ -425,8 +552,131 @@ namespace prime_or_not
 }
 
 
+/* 10. write a program to print prime numbers between 2 to 100*/
 
 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace prime_from_2_to_100
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            bool isPrime = true;
+            Console.WriteLine("Prime Numbers : ");
+            for (int i = 2; i <= 100; i++)
+            {
+                for (int j = 2; j <= 100; j++)
+                {
+
+                    if (i != j && i % j == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+
+                }
+                if (isPrime)
+                {
+                    Console.Write("\t" + i);
+                }
+                isPrime = true;
+            }
+            Console.ReadKey();
+
+        }
+    }
+}
+
+
+/*11.write a program to get reverse of a given number*/
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace rev_of_number
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int num, reverse = 0;
+            Console.WriteLine("Enter a Number : ");
+            num = int.Parse(Console.ReadLine());
+            while (num != 0)
+            {
+                reverse = reverse * 10;
+                reverse = reverse + num % 10;
+                num = num / 10;
+            }
+            Console.WriteLine("Reverse of Entered Number is : " + reverse);
+            Console.ReadLine();
+
+
+
+        }
+    }
+}
+
+
+
+/*12.write a program to find whether the given number is palindrome or not*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace palindrome_or_not_num_
+{
+    class Program
+    {
+
+
+        public static void Main()
+        {
+            int num, r, sum = 0, t;
+
+            Console.Write("Input a number: ");
+            num = Convert.ToInt32(Console.ReadLine());
+
+            for (t = num; num != 0; num = num / 10)
+            {
+                r = num % 10;
+                sum = sum * 10 + r;
+            }
+            if (t == sum)
+            {
+                Console.Write("{0} is a palindrome number.\n", t);
+                Console.Read();
+
+            }
+            else
+
+            {
+                Console.Write("{0} is not a palindrome number.\n", t);
+                Console.Read();
+            }
+        }
+                  
+        
+    }
+}
 
     
 
