@@ -1,0 +1,1491 @@
+C#-Fundamentals_1
+
+/*1. write a program to remove duplicate elements from the array of integers*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace toremoveduplicate
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = { 1, 2, 3, 4, 5, 2 };// 2 is duplicate element 
+
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = i + 1; j < arr.Length; j++)
+                {
+                    if (arr[i] == arr[j])
+
+                    {
+
+                        Console.WriteLine(arr[i]);
+                        Console.Read();
+
+                    }
+
+
+                }
+
+
+            }
+
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+/*2. write a program to count how many numbers of times eacg chracter appears in the given string*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace numoftimes_char
+{
+    class Program
+    {
+        static int kaumudi = 256;
+        static void calculate(String s, int[] cal)
+        {
+            for (int i = 0; i < s.Length; i++)
+                cal[s[i]]++;
+        }
+        public static void Main()
+        {
+            String s = "abusfjkvincsibyusvhuidx";
+            int[] cal = new int[kaumudi];
+            calculate(s, cal);
+            for (int i = 0; i < kaumudi; i++)
+            {
+                if (cal[i] > 1)
+                {
+                    Console.WriteLine("Character " + (char)i);
+                    Console.WriteLine("Occurrence = " + cal[i] + " times");
+                    Console.ReadLine();
+                }
+                if (cal[i] == 1)
+                {
+                    Console.WriteLine("Character " + (char)i);
+                    Console.WriteLine("Occurrence = " + cal[i] + " time");
+                    Console.ReadLine();
+                }
+            }
+        }
+    }
+
+
+
+
+
+/*3.write a function to get largest number in the given array*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace largest.no_array
+{
+    class Program
+    {
+        public static void Main()
+        {
+            int[] arr = new int[5] { 99, 95, 93, 89, 87 };
+            int i,n, max;
+            // size of the array
+            n = 5;
+            max = arr[0];
+            
+            for (i = 1; i < n; i++)
+            {
+                if (arr[i] > max)
+                {
+                    max = arr[i];
+                }
+
+            }
+            Console.Write("largest number = {0}\n", max);
+            Console.Read();
+
+        }
+    }
+
+}
+
+
+
+
+
+/*4.write a program to find whether a given 3 digit number is an armstrong number or not*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace armstrong
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            int val = 212, sum = 0;
+            int rem;
+            // check for armstrong(371, 27+343+1=371)
+            for (int i = val; i > 0; i = i / 10)
+            {
+                rem = i % 10;
+                sum = sum + rem * rem * rem;
+            }
+            if (sum == val)
+            {
+                Console.Write("Armstrong Number");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.Write("Not an Armstrong Number");
+                Console.ReadLine();
+            }
+          
+
+        }
+    }
+}
+
+
+
+
+
+
+/*5.write a program to generate the first n terms in the series 1,8,27,64,125*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace to_print_cube_series
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            
+                int i, cube;
+               
+                Console.Write("enter the value of n : ");
+                cube = Convert.ToInt32(Console.ReadLine());
+                for (i = 1; i <= cube; i++)
+                {
+                    Console.Write("Number is : {0} and cube of the {1} is :{2} \n", i, i, (i * i * i));
+                    Console.ReadLine();
+                }
+            
+
+        }
+    }
+}
+
+
+
+/*6.write a program to generate the first n prime numbers in the series*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ascending_order
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+             int num i,a,n;
+             Console.WriteLine("enter the number");
+             n = Covert.ToInt32(Console.ReadLine());    
+             Console.WriteLine("prime numbers within the range are");
+             
+             for  (num = 2;num <= n; num++)
+             {
+                 a = 0;
+                 for (i = 2;i <= num/2; i++)
+                 {
+                    if (num % i == 0)
+
+                     {
+                      
+                        a++;
+                     }
+
+
+                 }
+                 if (a == 0 && num != 1)
+                   Console.WriteLine(num);
+
+             } 
+
+             Console.ReadLine();
+     }
+}
+
+
+/*7.The goal is to print the given patterns as follows based on the number of lines as input
+1 2 3 4 5
+1 2 3 4
+1 2 3
+1 2
+1
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace pattern1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n;
+            Console.WriteLine("enter the value of n");
+            n = Convert.ToInt32(Console.ReadLine());
+            for (int i = n; i >= 1; i--)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write("{0}\t", j);
+                }
+                Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+/*8.The goal is to print the given patterns as follows based on the number of lines as input
+     5
+    454
+   34543
+  2345432
+ 123454321
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace pattern2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n;
+            Console.WriteLine("enter a number");
+            n = Convert.ToInt32(Console.ReadLine());
+            for (int i = n; i >= 1; i++)
+            {
+                for (int j = i; j <= n; j++)
+                {
+                    Console.Write(j);
+                }
+
+                for (int k = (n - 1); k >= i; k--)
+                {
+                    Console.Write(k);
+                }
+                Console.WriteLine();
+
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+/*9.The goal is to print the given patterns as follows based on the number of lines as input
+ 12345654321
+ 123454321
+  1234321
+   12321
+    121
+     1
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace pattern3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, j, k, n;
+            Console.WriteLine("enter the number\n");
+            n = Convert.ToInt32(Console.ReadLine());
+            for (i = n; i >= 1; i--)
+            {
+                for (j = 1; j <= i; j++)
+                {
+                    Console.Write(j);
+                }
+                for (k = i; k >= 1; k--)
+                {
+                    Console.Write(k);
+                }
+                Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+/*10.write a program in take 10 integer in an array and sort in acsending order*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ascending_order
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int[] arr = {10,9,8,7,6,5,4,3,2,1};
+            int temp;
+            for (int j = 0; j <= arr.Length - 2; j++)
+            {
+                for (int i = 0; i <= arr.Length - 2; i++)
+                {
+                    if (arr[i] > arr[i + 1])
+                    {
+                        temp = arr[i + 1];
+                        arr[i + 1] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
+            }
+            Console.WriteLine("ascending order:");
+            foreach (int a in arr)
+                Console.Write(a + " ");
+            Console.Read();
+
+
+        }
+    }
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+C#-Fundamentals
+
+
+
+/*Requirement 1.write a program to print multiplication table of given number*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace multiplication_table
+{
+    class Program
+    {
+
+        public static void Main()
+        {
+            int n = 5, a = 1;
+
+            while (a <= 12)
+            {
+                Console.WriteLine(" {0} x {1} = {2} \n ", n, a, n * a);
+                
+                Console.ReadLine();
+                a++;
+            }
+        }
+    }
+}
+
+
+
+
+/*Requirement 2. write a program to print if the given string string is palindrome or not*/
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace palindrome
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            string string1, rev;
+            string1 = "Madam";
+
+            char[] ch = string1.ToCharArray();
+            Array.Reverse(ch);
+
+            rev = new string(ch);
+
+            bool b = string1.Equals(rev, StringComparison.OrdinalIgnoreCase);
+            if (b == true)
+            {
+                Console.WriteLine("" + string1 + " is a Palindrome!");
+            }
+            else
+            {
+                Console.WriteLine(" " + string1 + " is not a Palindrome!");
+            }
+            Console.Read();
+
+
+        }
+    }
+}
+
+
+
+
+
+
+/*2.write a program to take a integer as input and print the sum of diits of the number*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sum_of_digits
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, sum = 0, m;
+            Console.Write("Enter a number: ");
+            n = int.Parse(Console.ReadLine());
+            while (n > 0)
+            {
+                m = n % 10;
+                sum = sum + m;
+                n = n / 10;
+            }
+            Console.Write("Sum is= " + sum);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+/*3.write a program to display the factorial of numbers from 1 to the input number?
+  Take input using scanner? Also display if the factorial is a prime number or not?*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace factorial
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int fact = 1, num, flag;
+            Console.WriteLine("enter the number");
+            num = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 1; i <= num; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    fact = fact * j;
+                }
+
+                Console.WriteLine("the factorial of {0}is {1}", i, fact);
+                fact = 1;
+
+            }
+            Console.ReadKey();
+
+        }
+    }
+}
+
+
+
+
+
+
+/*4.write a program to display number of days in a month ? month name (string) and 
+year should be taken as input ? leap year should be considered?*/
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Globalization;
+
+namespace no.of.days
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("YEAR:");
+            int year = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("MONTH");
+            string mon = Console.ReadLine();
+            int m = DateTime.ParseExact(mon, "MMMM", CultureInfo.CurrentCulture).Month;
+
+            //int m = DateTime.Parse("1." + mon + "year").Month;
+
+            int days = DateTime.DaysInMonth(year, m);
+            Console.WriteLine("the no. of days in the month" + mon + "during the year" + year + "is" + days);
+            Console.ReadKey();
+
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*5. write a program to print first 10 natural numbers*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace first10_naturalnumbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i;
+           
+            Console.WriteLine("The first 10 natural number are:");
+
+            for (i = 1; i <= 10; i++)
+            {
+                Console.Write("{0} ", i);
+            }
+            Console.Write("\n\n");
+            Console.Read();
+
+        }
+    }
+}
+
+
+
+
+
+
+/*6. write a program to print first 10 natural numbers in reverse order*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace rev_nat_num
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int i;
+
+            Console.Write("the first 10 natural numbers in reverse order\n");
+          
+           
+            for (i = 10; i >= 1; i--)
+            {
+                Console.WriteLine("\n" + i);
+            }
+
+            Console.ReadLine();
+
+
+        }
+    }
+}
+
+
+
+
+
+
+/*7.wrtite a program to print first 10 even natural numbers*/
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace first10_even
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            int i = 0;
+
+            Console.WriteLine("Even Numbers :");
+            for (i = 1; i <= 10; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.Write(i + " ");
+                }
+            }
+
+            Console.WriteLine();
+            Console.Read();
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+8./*write a program to print numbers between the range */
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ncr
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, r, per, f1, f2, f;
+            Console.WriteLine("enter the values for n and r");
+            n = Convert.ToInt32(Console.ReadLine());
+            r = Convert.ToInt32(Console.ReadLine());
+            f = 1;
+            for(int i = 1;i <= n;i++)
+            {
+                f = f * i;
+            }
+
+            int num = n - r;
+            f1 = 1;
+            for (int j = 1; j <= num; j++)
+            {
+
+                f1 = f1 * j;
+            }
+            f2 = 1;
+            for (int k = 1; k <= r; k++)
+            {
+
+                f2 = f2 * k;
+            }
+
+            per = f / (f1 * f2);
+            Console.WriteLine(per);
+            Console.ReadKey();
+
+        }
+
+    }
+
+
+
+
+
+9./* write a program to find whether the given number is prime or not*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace prime_or_not_p9_
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            int n = 10, a = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                if (n % i == 0)
+                {
+                    a++;
+                }
+            }
+            if (a == 2)
+            {
+                Console.WriteLine("{0} is a Prime Number", n);
+            }
+            else
+            {
+                Console.WriteLine("{0} is not a Prime Number",n);
+            }
+            Console.ReadLine();
+
+        }
+    }
+}
+
+
+/* 10. write a program to print prime numbers between 2 to 100*/
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace prime_from_2_to_100
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            bool isPrime = true;
+            Console.WriteLine("Prime Numbers : ");
+            for (int i = 2; i <= 100; i++)
+            {
+                for (int j = 2; j <= 100; j++)
+                {
+
+                    if (i != j && i % j == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+
+                }
+                if (isPrime)
+                {
+                    Console.Write("\t" + i);
+                }
+                isPrime = true;
+            }
+            Console.ReadKey();
+
+        }
+    }
+}
+
+
+/*11.write a program to get reverse of a given number*/
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace rev_of_number
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int num, reverse = 0;
+            Console.WriteLine("Enter a Number : ");
+            num = int.Parse(Console.ReadLine());
+            while (num != 0)
+            {
+                reverse = reverse * 10;
+                reverse = reverse + num % 10;
+                num = num / 10;
+            }
+            Console.WriteLine("Reverse of Entered Number is : " + reverse);
+            Console.ReadLine();
+
+
+
+        }
+    }
+}
+
+
+
+/*12.write a program to find whether the given number is palindrome or not*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace palindrome_or_not_num_
+{
+    class Program
+    {
+
+
+        public static void Main()
+        {
+            int num, r, sum = 0, t;
+
+            Console.Write("Input a number: ");
+            num = Convert.ToInt32(Console.ReadLine());
+
+            for (t = num; num != 0; num = num / 10)
+            {
+                r = num % 10;
+                sum = sum * 10 + r;
+            }
+            if (t == sum)
+            {
+                Console.Write("{0} is a palindrome number.\n", t);
+                Console.Read();
+
+            }
+            else
+
+            {
+                Console.Write("{0} is not a palindrome number.\n", t);
+                Console.Read();
+            }
+        }
+                  
+        
+    }
+}
+
+    
+
+
+
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace product
+{
+    public class products
+    {
+        private string productcode;
+        public string Productcode
+        {
+            get { return productcode; }
+            set { productcode = value; }
+        }
+        private string productname;
+        public string Productname
+        {
+            get { return productname; }
+            set { productname = value; }
+
+        }
+        private double productprice;
+        public double Productprice
+        {
+            get { return productprice; }
+            set { productprice = value; }
+
+        }
+        private char categorycode;
+        public char Categorycode
+        {
+            get { return categorycode; }
+            set { categorycode = value; }
+
+        }
+        private static int prodCounter = 100;
+
+        private string generateProductCode(char c)
+        {
+            int x= prodCounter + 1;
+            string y = x.ToString();
+            productcode = categorycode +y;
+            return productcode;
+        }
+         public products(string pname,double pprice,char c)
+        {
+            this.productcode = generateProductCode(c);
+            this.productname = pname;
+            this.productprice = pprice;
+            this.categorycode = c;
+        }
+        public products(string pname,double pprice)
+        {
+            this.productname = pname;
+            this.productprice = pprice;
+            this.categorycode = 'E';
+            this.productcode = generateProductCode(categorycode);
+        }
+
+        public void getProductDetails()
+        {
+            Console.WriteLine("Product Code--{0}", productcode);
+            Console.WriteLine("Product Name--{0}", productname);
+            Console.WriteLine("Product Price--{0}", productprice);
+            Console.WriteLine("category--{0}", categorycode);
+
+            Console.ReadKey();
+
+
+        }
+
+
+
+
+    }
+}
+
+
+
+                                                main function
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using product;
+
+namespace productAssignment
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            products p = new products("laptop", 45000.00, 'E');
+            p.getProductDetails();
+
+            products q = new products("tv", 65000.00);
+            q.getProductDetails();
+            Console.ReadKey();
+          
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using cricket11;
+
+namespace Cricket
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter the target runs");
+            int target = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter current over");
+            int currentover = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter current score");
+            int currentscore = Convert.ToInt32(Console.ReadLine());
+            OneDayCricket a = new OneDayCricket(currentover, currentscore, target);
+            double x= a.calcCurrentRunrate();
+            double b=a.calcReqdRunrate();
+            Console.WriteLine("the current run rate is {0}", +x);
+            Console.WriteLine("the required run rate is {0}", +b);
+            Console.ReadKey();
+            
+        }
+    }
+}
+
+                                 class library
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cricket11
+{
+    public abstract class cricketex
+    {
+        protected int maxOvers;
+        protected int targetScore;
+        protected int currentOver;
+        protected int currentScore;
+
+        public int MaxOvers
+        {
+            get { return maxOvers; }
+        }
+        public int TargetScore
+        {
+            get { return targetScore; }
+        }
+
+        public int CurrentScore
+        {
+            get { return currentScore; }
+            set { currentScore = value; }
+        }
+
+        public int CurrentOver
+        {
+            get{ return currentOver;}
+            set { currentOver = value; }
+        }
+
+        
+
+        public abstract double calcCurrentRunrate();
+        public abstract double calcReqdRunrate();
+
+    }
+
+    public class OneDayCricket:cricketex
+    {
+        double currentrunrate,requiredrunrate;
+        public OneDayCricket(int crtOver,int crtScore,int target)
+        {
+            this.targetScore = target;
+            this.currentOver = crtOver;
+            this.currentScore = crtScore;
+            this.maxOvers = 50;
+        }
+        
+        
+       
+        public override double calcCurrentRunrate()
+        {
+            currentrunrate = currentScore / currentOver;
+            return currentrunrate;
+
+
+        }
+
+        public override double calcReqdRunrate()
+        {
+            int remainingruns = targetScore - currentScore;
+            int remainingover = maxOvers - currentOver;
+            requiredrunrate = remainingruns / remainingover;
+            return requiredrunrate;
+
+
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Giftcard1
+{
+    public class gift
+    {
+        private long cardNo;
+        private double balance;
+        private Boolean active;
+        
+
+        public long Cardno
+        {
+            get { return cardNo; }
+            set { cardNo = value; }
+        }
+
+        public Boolean Active
+        {
+            get { return active; }
+            set { active = value; }
+        }
+
+        public double Balance
+        {
+            get { return balance; }
+        }
+        public gift(long no, Boolean active)
+        {
+            this.cardNo = no;
+            //this.balance = balance;
+            this.active = active;
+        }
+        public gift()
+        {
+            this.balance = 0;
+            this.active = true;
+        }
+
+        public void SwipeCard(double amt)
+        {
+            if(active==true && balance>amt)
+            {
+                 balance=balance-amt;
+            }
+            
+
+            else
+            {
+                Console.WriteLine("the account is not contains manimum balance");
+            }
+            Console.WriteLine("the available balance is {0}", balance);
+        }
+        public void RechargeCard(double amt)
+        {
+            if (active == true)
+            {
+                balance = balance + amt;
+            }
+            else
+            {
+                Console.WriteLine("the account is not active");
+            }
+        }
+        
+    }
+    
+
+        
+}
+
+
+        
+
+
+                                                       main function
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Giftcard1;
+
+namespace giftcard
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            gift g = new gift(545243535, true);
+            g.RechargeCard(2000);
+            g.SwipeCard(500);
+            g.SwipeCard(400);
+
+
+            Console.WriteLine("\n");
+            gift x = new gift();
+            x.RechargeCard(3000);
+            x.SwipeCard(500);
+            x.SwipeCard(2600);
+            
+            Console.ReadKey();
+
+
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+create database assign
+use assign
+
+create table category(
+id int not null primary key identity(1,1),
+name varchar(64) not null,
+tax decimal)
+
+create table product (
+product_id int not null primary key identity(1,1),
+product_name varchar(64) not null,
+open_stock decimal not null,
+cur_stock decimal not null,
+sale_price decimal not null,
+cat_id int not null foreign key references category(id)
+)
+
+create table customer(
+cust_id int not null primary key identity(1,1),
+cust_name varchar(32) not null,
+cust_mbl varchar(15) not null,
+open_bal decimal not null default 0,
+is_active BIT not null constraint defa default ('true'))
+
+create table Saleshead(
+sale_inv_np int not null primary key identity(1,1),
+sales_date date not null,
+customer int not null foreign key references customer(cust_id),
+ctype char(100) 
+constraint check_1 check(ctype='credit' or ctype='paid'))
+
+create table salesdetails(
+sale_inv_no int not null foreign key references Saleshead(sale_inv_np),
+
+product_id int not null foreign key references product(product_id),
+qty decimal not null,
+rate decimal not null)
+
+
+
+insert into category values('women bags',12)
+insert into category values('men dresses',12)
+insert into category values('home essentials',12)
+insert into category values('soaps',12)
+insert into category values('electronic',12)
+
+update category
+set tax=40.5 where name='electronic'
+
+insert into customer values('ramya','4455665445',default,'true')
+insert into customer values('kumar','3988989445',500,'true')
+insert into customer values('ram','9987898667',default,'false')
+insert into customer values('roopa','8767654556',100,'true')
+insert into customer values('kavya','7878987898',800,'true')
+
+
+insert into product values('handbag',20,15,1000,1)
+insert into product values('vessels',50,45,750,3)
+insert into product values('shirt',20,15,700,2)
+insert into product values('santoor',40,35,30,4)
+insert into product values('wallet',20,15,200,1)
+insert into product values('samsung mbl',2,1,10000,5)
+insert into product values('headphone',15,14,2000,5)
+
+insert into Saleshead values('2020-09-25',2,'credit')
+insert into Saleshead values('2019-08-05',2,'paid')
+
+insert into Saleshead values('2020-04-25',1,'credit')
+
+insert into Saleshead values('2020-09-25',3,'credit')
+insert into Saleshead values('2020-02-17',3,'creit')
+
+insert into Saleshead values('2020-09-25',4,'credit')
+insert into Saleshead values('2020-06-25',4,'credit')
+
+update Saleshead 
+set ctype='paid' where sales_date='2020-02-17'
+
+
+insert into salesdetails values(1,2,3,200000)
+insert into salesdetails values(2,4,5,40000)
+insert into salesdetails values(4,2,8,2000)
+insert into salesdetails values(5,3,1,30000)
+insert into salesdetails values(3,2,9,400000)
+
+select * from salesdetails
+select * from product
+ select * from customer
+select * from category
+
+select p.product_name,p.cur_stock,c.name from product p,category c where p.cat_id=c.id
+
+select * from customer where is_active='true'
+
+select cust_name,open_bal from customer
+
+select sum(sd.qty) QTY from salesdetails sd,Saleshead sh where sales_date>'2020-06-01' and sales_date<'2020-07-01'
+
+select product_name,sum(qty) QTY from product p,salesdetails sd where sd.product_id=p.product_id
+group by product_name
+order by (QTY) DESC
+
+select product_name,sum(qty) QTY from product p,salesdetails sd where sd.product_id=p.product_id
+group by product_name
+order by (QTY) ASC
+
+
+select cust_name,open_bal from customer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
