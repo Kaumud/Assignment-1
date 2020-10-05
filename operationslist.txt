@@ -1,0 +1,112 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace operationslist
+{
+
+
+
+    public class Author
+    {
+        // Auto-Initialized properties  
+        public string Name { get; set; }
+        public string Book { get; set; }
+        public double Price { get; set; }
+        public string AuthorDetails()
+        {
+            return string.Format("{0} is an author of {1}. Price: ${2}",
+                Name, Book, Price);
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello List!");
+            ListIntro();
+        }
+
+        public static void ListIntro()
+        {
+            // 1.Create a List of int  
+            List<int> numbers = new List<int>(5) { 5, 10, 15, 20, 25 };
+
+
+
+            // 2.1.Add more items to List  
+            numbers.Add(30);
+            numbers.Add(35);
+            numbers.Add(40);
+
+
+
+            // 2.2.Add a index  
+            int[] prime = new int[] { 1, 3, 5, 7, 11, 13 };
+            numbers.AddRange(prime);
+
+
+
+
+            // 2.3.Insert an item at index = 3  
+            numbers.Insert(2, 22);
+            numbers.Insert(3, 33);
+
+            // Insert a collection     
+            numbers.InsertRange(5, new int[] { 11, 22, 33, 44, 55 });
+
+            // Read List items  
+            foreach (int num in numbers)
+            {
+                Console.Write($"{num}, ");
+            }
+
+            Console.WriteLine();
+
+            
+
+
+            //2.4 remove
+               
+                {
+                    string s = "abc---def";
+                    //
+                    Console.WriteLine("Index: 012345678");
+                    Console.WriteLine("1)     {0}", s);
+                    Console.WriteLine("2)     {0}", s.Remove(3));
+                    Console.WriteLine("3)     {0}", s.Remove(3, 3));
+                }
+            
+
+
+
+
+            {
+
+                // 2.5 contains 
+                String str = "GeeksforGeeks";
+                String substr1 = "for";
+                String substr2 = "For";
+
+                // using String.Contains() Method 
+                Console.WriteLine(str.Contains(substr1));
+
+                // Here case-sensitive comparison 
+                // And substr2 value is 'For' 
+                // So its return false 
+                Console.WriteLine(str.Contains(substr2));
+            }
+
+            Console.WriteLine();
+
+        
+
+            Console.ReadKey();
+        }
+    }
+
+}
