@@ -1,0 +1,223 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+namespace Dictionaryprog
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<int, string> s = new Dictionary<int, string>();
+            //Add to insert elements
+            s.Add(1, "Bangalore");
+            s.Add(2, "Mumbai");
+            s.Add(3, "Pune");
+            s.Add(4, "Hyderabad");
+            s.Add(5, "Chennai");
+            s.Add(6, "Delhi");
+            Console.WriteLine("The elements in dictionary are:");
+            s[7] = "Kolkatta";
+            s[8] = "Ahmedabad";
+            s[9] = "Noida";
+            s[10] = "Tiruvanantapuram";
+            foreach (KeyValuePair<int, string> dictionary in mydictionary)
+            {
+                Console.WriteLine("The element of dictionary are:" + dictionary.Key + " " + dictionary.Value);
+            }
+            //remove
+            Console.WriteLine("elements in dictionary after remove: " + s.Remove(10));
+            Console.WriteLine("elements in dictionary after remove: " + s.Remove(9));
+            Console.WriteLine("elements in dictionary after remove: " + s.Remove(8));
+            Console.WriteLine("elements in dictionary after remove: " + s.Remove(7));
+            Console.WriteLine("elements in dictionary after remove: " + s.Remove(6));
+            Console.WriteLine("elements in dictionary after remove: " + s.Remove(5));
+            Console.WriteLine("the key-value pairs in dictionary are:");
+            foreach (KeyValuePair<int, string> dictionary in s)
+            {
+                Console.WriteLine("The element of dictionary are:" + dictionary.Key + " " + dictionary.Value);
+            }
+            //count
+            Console.WriteLine("the no of elements present in dictionary: " + s.Count());
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Queue1
+{
+    class Queue1
+    {
+        static void Main(string[] args)
+        {
+            Queue<Int32> q = new Queue<Int32>();
+            q.Enqueue(2);
+            Console.WriteLine("The no.of elements in queue are:" + q.Count());
+            Console.WriteLine("The elements exist in queue is:" + q.Contains(2));
+            q.Enqueue(4);
+            Console.WriteLine("The no.of elements in queue are:" + q.Count());
+            Console.WriteLine("The elements exist in queue is:" + q.Contains(4));
+            q.Enqueue(6);
+            Console.WriteLine("The no.of elements in queue are:" + q.Count());
+            Console.WriteLine("The elements exist in queue is:" + q.Contains(6));
+            q.Enqueue(8);
+            Console.WriteLine("The no.of elements in queue are:" + q.Count());
+            Console.WriteLine("The elements exist in queue is:" + q.Contains(8));
+            q.Enqueue(10);
+            Console.WriteLine("The no.of elements in queue are:" + q.Count());
+            Console.WriteLine("The elements exist in queue is:" + q.Contains(10));
+            Console.WriteLine("The list of elements in queue are:");
+            foreach (int x in q)
+            {
+                Console.WriteLine("elements of queue are:" + x);
+            }
+            Console.WriteLine("pop element of queue is:" + q.Dequeue());
+            Console.WriteLine("The no.of elements in queue are:" + q.Count());
+            Console.WriteLine("The elements exist in queue is:" + q.Contains(2));
+            Console.WriteLine("pop element of queue is:" + q.Dequeue());
+            Console.WriteLine("The no.of elements in queue are:" + q.Count());
+            Console.WriteLine("The elements exist in queue is:" + q.Contains(4));
+            Console.WriteLine("pop element of stack is:" + q.Dequeue());
+            Console.WriteLine("The no.of elements in queue are:" + q.Count());
+            Console.WriteLine("The elements exist in queue is:" + q.Contains(6));
+            Console.WriteLine("pop element of stack is:" + q.Dequeue());
+            Console.WriteLine("The no.of elements in queue are:" + q.Count());
+            Console.WriteLine("The elements exist in queue is:" + q.Contains(8));
+            Console.WriteLine("pop element of queue is:" + q.Dequeue());
+            Console.WriteLine("The no.of elements in queue are:" + q.Count());
+            Console.WriteLine("The elements exist in queue is:" + q.Contains(10));
+            Console.WriteLine("The list of elements in queue are:");
+            foreach (int x in q)
+            {
+                Console.WriteLine("elements of queue are:" + x);
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Dictionary1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<int, string> mydictionary = new Dictionary<int, string>();
+            //Add to insert elements
+            mydictionary.Add(1, "Bangalore");
+            mydictionary.Add(2, "Mumbai");
+            mydictionary.Add(3, "Pune");
+            mydictionary.Add(4, "Hyderabad");
+            mydictionary.Add(5, "Chennai");
+            mydictionary.Add(6, "Delhi");
+            Console.WriteLine("The elements in dictionary are:");
+            mydictionary[7] = "Kolkatta";
+            mydictionary[8] = "Ahmedabad";
+            mydictionary[9] = "Noida";
+            mydictionary[10] = "Tiruvanantapuram";
+            foreach (KeyValuePair<int, string> dictionary in mydictionary)
+            {
+                Console.WriteLine("The element of dictionary are:" + dictionary.Key + " " + dictionary.Value);
+            }
+            //remove
+            Console.WriteLine("elements in dictionary after remove: " + mydictionary.Remove(10));
+            Console.WriteLine("elements in dictionary after remove: " + mydictionary.Remove(9));
+            Console.WriteLine("elements in dictionary after remove: " + mydictionary.Remove(8));
+            Console.WriteLine("elements in dictionary after remove: " + mydictionary.Remove(7));
+            Console.WriteLine("elements in dictionary after remove: " + mydictionary.Remove(6));
+            Console.WriteLine("elements in dictionary after remove: " + mydictionary.Remove(5));
+            Console.WriteLine("the key-value pairs in dictionary are:");
+            foreach (KeyValuePair<int, string> dictionary in mydictionary)
+            {
+                Console.WriteLine("The element of dictionary are:" + dictionary.Key + " " + dictionary.Value);
+            }
+            //count
+            Console.WriteLine("the no of elements present in dictionary: " + mydictionary.Count());
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Stackk
+{
+    class Stackk
+    {
+        static void Main(string[] args)
+        {
+            Stack<Int32> s = new Stack<Int32>();
+            s.Push(2);
+            Console.WriteLine("The no.of elements in stack are:" + s.Count());
+            Console.WriteLine("The elements exist in stack is:" + s.Contains(2));
+            s.Push(4);
+            Console.WriteLine("The no.of elements in stack are:" + s.Count());
+            Console.WriteLine("The elements exist in stack is:" + s.Contains(4));
+            s.Push(6);
+            Console.WriteLine("The no.of elements in stack are:" + s.Count());
+            Console.WriteLine("The elements exist in stack is:" + s.Contains(6));
+            s.Push(8);
+            Console.WriteLine("The no.of elements in stack are:" + s.Count());
+            Console.WriteLine("The elements exist in stack is:" + s.Contains(8));
+            s.Push(10);
+            Console.WriteLine("The no.of elements in stack are:" + s.Count());
+            Console.WriteLine("The elements exist in stack is:" + s.Contains(10));
+            Console.WriteLine("The elements in stack are:");
+            foreach (int x in s)
+            {
+                Console.WriteLine("elements of stack are:" + x);
+            }
+            Console.WriteLine("pop element of stack is:" + s.Pop());
+            Console.WriteLine("The no.of elements in stack are:" + s.Count());
+            Console.WriteLine("The elements exist in stack is:" + s.Contains(10));
+            Console.WriteLine("pop element of stack is:" + s.Pop());
+            Console.WriteLine("The no.of elements in stack are:" + s.Count());
+            Console.WriteLine("The elements exist in stack is:" + s.Contains(8));
+            Console.WriteLine("pop element of stack is:" + s.Pop());
+            Console.WriteLine("The no.of elements in stack are:" + s.Count());
+            Console.WriteLine("The elements exist in stack is:" + s.Contains(6));
+            Console.WriteLine("pop element of stack is:" + s.Pop());
+            Console.WriteLine("The no.of elements in stack are:" + s.Count());
+            Console.WriteLine("The elements exist in stack is:" + s.Contains(4));
+            Console.WriteLine("pop element of stack is:" + s.Pop());
+            Console.WriteLine("The no.of elements in stack are:" + s.Count());
+            Console.WriteLine("The elements exist in stack is:" + s.Contains(2));
+            Console.WriteLine("The elements in stack are:");
+            foreach (int x in s)
+            {
+                Console.WriteLine("elements of stack are:" + x);
+            }
+            Console.ReadKey();
+        }
+    }
+}
