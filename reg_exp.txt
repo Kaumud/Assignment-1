@@ -1,0 +1,214 @@
+//1.C# program that uses Match, Regex
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+
+namespace practice
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Step 1: create new Regex.
+            Regex regex = new Regex(@"\d+");
+
+            // Step 2: call Match on Regex instance.
+            Match match = regex.Match("kaumu15");
+
+            // Step 3: test for Success.
+            if (match.Success)
+            {
+                Console.WriteLine("MATCH VALUE: " + match.Value);
+                Console.ReadLine();
+            }
+
+        }
+    }
+}
+
+
+
+//2.C# program that uses Regex.Match
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace practice_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            // Part 1: the input string.
+            string input = "/content/rekha-1.aspx";
+
+            // Part 2: call Regex.Match.
+            Match match = Regex.Match(input, @"content/([A-Za-z0-9\-]+)\.aspx$",
+                RegexOptions.IgnoreCase);
+
+            // Part 3: check the Match for Success.
+            if (match.Success)
+            {
+                // Part 4: get the Group value and display it.
+                string key = match.Groups[1].Value;
+                Console.WriteLine(key);
+                Console.ReadLine();
+            }
+        }
+    }
+}
+
+
+//3.C# program that uses IsMatch, start and end
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace practice3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string test = "kkrr";
+
+            // Match the start of a string.
+            if (Regex.IsMatch(test, "^kk"))
+            {
+                Console.WriteLine("START MATCHES");
+            }
+
+            // Match the end of a string.
+            if (Regex.IsMatch(test, "rr$"))
+            {
+                Console.WriteLine("END MATCHES");
+                Console.ReadLine();
+            }
+
+        }
+    }
+}
+
+
+
+
+//4.C# program that uses NextMatch
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace practice4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string value = "1 AND 5";
+
+            // Step 1: get first match.
+            Match match = Regex.Match(value, @"\d");
+            if (match.Success)
+            {
+                Console.WriteLine(match.Value);
+            }
+
+            // Step 2: get second match.
+            match = match.NextMatch();
+            if (match.Success)
+            {
+                Console.WriteLine(match.Value);
+                Console.ReadLine();
+            }
+
+        }
+    }
+}
+
+
+
+//5.C# program that uses Replace, replaces with pattern
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace practice5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            // Replace 2 or more digit pattern with a string.
+            Regex regex = new Regex(@"\d+");
+            string result = regex.Replace("dog 123 456", "peacock");
+            Console.WriteLine("RESULT: {0}", result);
+            Console.ReadLine();
+
+        }
+    }
+}
+
+
+//6.C# program that uses non-greedy Regex
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+
+namespace p6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string test = "/peacock/dog/";
+            // Version 1: use lazy (or non-greedy) metacharacter.
+            var result1 = Regex.Match(test, "^/.*?/");
+            if (result1.Success)
+            {
+                Console.WriteLine("NON-veg: {0}", result1.Value);
+            }
+            // Version 2: default Regex.
+            var result2 = Regex.Match(test, "^/.*/");
+            if (result2.Success)
+            {
+                Console.WriteLine("veg:     {0}", result2.Value);
+                Console.ReadLine();
+            }
+
+        }
+    }
+}
+
+
+
