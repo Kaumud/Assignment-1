@@ -1,0 +1,535 @@
+//1.C# program that uses Match, Regex
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+
+namespace practice
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Step 1: create new Regex.
+            Regex regex = new Regex(@"\d+");
+
+            // Step 2: call Match on Regex instance.
+            Match match = regex.Match("kaumu15");
+
+            // Step 3: test for Success.
+            if (match.Success)
+            {
+                Console.WriteLine("MATCH VALUE: " + match.Value);
+                Console.ReadLine();
+            }
+
+        }
+    }
+}
+
+
+
+//2.C# program that uses Regex.Match
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace practice_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            // Part 1: the input string.
+            string input = "/content/rekha-1.aspx";
+
+            // Part 2: call Regex.Match.
+            Match match = Regex.Match(input, @"content/([A-Za-z0-9\-]+)\.aspx$",
+                RegexOptions.IgnoreCase);
+
+            // Part 3: check the Match for Success.
+            if (match.Success)
+            {
+                // Part 4: get the Group value and display it.
+                string key = match.Groups[1].Value;
+                Console.WriteLine(key);
+                Console.ReadLine();
+            }
+        }
+    }
+}
+
+
+//3.C# program that uses IsMatch, start and end
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace practice3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string test = "kkrr";
+
+            // Match the start of a string.
+            if (Regex.IsMatch(test, "^kk"))
+            {
+                Console.WriteLine("START MATCHES");
+            }
+
+            // Match the end of a string.
+            if (Regex.IsMatch(test, "rr$"))
+            {
+                Console.WriteLine("END MATCHES");
+                Console.ReadLine();
+            }
+
+        }
+    }
+}
+
+
+
+
+//4.C# program that uses NextMatch
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace practice4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string value = "1 AND 5";
+
+            // Step 1: get first match.
+            Match match = Regex.Match(value, @"\d");
+            if (match.Success)
+            {
+                Console.WriteLine(match.Value);
+            }
+
+            // Step 2: get second match.
+            match = match.NextMatch();
+            if (match.Success)
+            {
+                Console.WriteLine(match.Value);
+                Console.ReadLine();
+            }
+
+        }
+    }
+}
+
+
+
+//5.C# program that uses Replace, replaces with pattern
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace practice5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            // Replace 2 or more digit pattern with a string.
+            Regex regex = new Regex(@"\d+");
+            string result = regex.Replace("dog 123 456", "peacock");
+            Console.WriteLine("RESULT: {0}", result);
+            Console.ReadLine();
+
+        }
+    }
+}
+
+
+//6.C# program that uses non-greedy Regex
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+
+namespace p6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string test = "/peacock/dog/";
+            // Version 1: use lazy (or non-greedy) metacharacter.
+            var result1 = Regex.Match(test, "^/.*?/");
+            if (result1.Success)
+            {
+                Console.WriteLine("NON-veg: {0}", result1.Value);
+            }
+            // Version 2: default Regex.
+            var result2 = Regex.Match(test, "^/.*/");
+            if (result2.Success)
+            {
+                Console.WriteLine("veg:     {0}", result2.Value);
+                Console.ReadLine();
+            }
+
+        }
+    }
+}
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace Regexexample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = "/csharp/trainingbatch-1.class";
+
+            Match match = Regex.Match(input, @"csharp/([A-Za-z0-9\-]+)\.class$", RegexOptions.IgnoreCase);
+
+            if (match.Success)
+            {
+                string key = match.Groups[1].Value;
+                Console.WriteLine(key);
+            }
+            Console.WriteLine();
+            Console.WriteLine("***checking whether starting and ening string matches ore not***");
+
+            string test = "zzaaaaaayy";
+            if (Regex.IsMatch(test, "^zz"))
+            {
+                Console.WriteLine("START MATCHES");
+            }
+
+            if (Regex.IsMatch(test, "yy$"))
+            {
+                Console.WriteLine("END MATCHES");
+            }
+            Console.WriteLine();
+            Console.WriteLine("****getting the required pattern in the entire string*****");
+            string value = "40 AND 50 And 60 are the digits divided by 10";
+            Match mat = Regex.Match(value, @"\d+");
+            for (int i = 0; i < value.Length; i++)
+                if (mat.Success)
+                {
+                    Console.WriteLine(mat.Value);
+                    mat = mat.NextMatch();
+                }
+
+            Console.WriteLine();
+            Console.WriteLine("***ecample for replacing the particular pattern by another patern****");
+            Regex regex = new Regex(@"\d+");
+            string result = regex.Replace("ramya 5675 4563", "gnana");
+            Console.WriteLine("RESULT: {0}", result);
+
+            Console.WriteLine();
+            Console.WriteLine("****greedy and non greedy ******");
+            string test1 = "/mycomputer/sample/a.txt";
+            // Version 1: use lazy (or non-greedy) metacharacter.
+            var result1 = Regex.Match(test1, "^/.*?/");
+            if (result1.Success)
+            {
+                Console.WriteLine("NON-GREEDY: {0}", result1.Value);
+            }
+            // Version 2: default Regex.
+            var result2 = Regex.Match(test1, "^/.*/");
+            if (result2.Success)
+            {
+                Console.WriteLine("GREEDY:     {0}", result2.Value);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("*********using static regex*******");
+            string inp = "/content/alternate-1.aspx";
+
+            // This calls the static method specified.
+            Console.WriteLine(RegexUtil.MatchKey(inp));
+            
+            Console.WriteLine("********length value index methods*********");
+            Match m = Regex.Match("12345 Ayfhdsddsy", @"A.*y");
+            if (m.Success)
+            {
+                Console.WriteLine("Value  = " + m.Value);
+                Console.WriteLine("Length = " + m.Length);
+                Console.WriteLine("Index  = " + m.Index);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("******ignoring case******");
+            const string val = "RAmya";
+            // ... This ignores the case of the "TE" characters.
+            if (Regex.IsMatch(val, "raM..", RegexOptions.IgnoreCase))
+            {
+                Console.WriteLine(true);
+            }
+
+
+            Console.ReadKey();
+
+
+        }
+    }
+    
+
+    static class RegexUtil
+    {
+        static Regex _regex = new Regex(@"/content/([a-z0-9\-]+)\.aspx$");
+
+        static public string MatchKey(string input)
+        {
+            Match match = _regex.Match(input.ToLower());
+            if (match.Success)
+            {
+                return match.Groups[1].Value;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Diagnostics;
+
+namespace regex2
+{
+    class Program
+    {
+        static int Version1()
+        {
+            string value = "This is a simple 5string5 for Regex.";
+            return Regex.Match(value, @"5\w+5").Length;
+        }
+
+        static Regex _wordRegex = new Regex(@"5\w+5", RegexOptions.Compiled);
+
+        static int Version2()
+        {
+            string value = "This is a simple 5string5 for Regex.";
+            return _wordRegex.Match(value).Length;
+        }
+
+        const int _max = 1000000;
+        static void Main(string[] args)
+        {
+
+            var s1 = Stopwatch.StartNew();
+            for (int i = 0; i < _max; i++)
+            {
+                if (Version1() != 8)
+                {
+                    return;
+                }
+            }
+            s1.Stop();
+            // Version 2: use Regex.Match, compiled Regex, instance Regex.
+            var s2 = Stopwatch.StartNew();
+            for (int i = 0; i < _max; i++)
+            {
+                if (Version2() != 8)
+                {
+                    return;
+                }
+            }
+            s2.Stop();
+            Console.WriteLine(((double)(s1.Elapsed.TotalMilliseconds * 1000000) /
+                _max).ToString("0.00 ns"));
+            Console.WriteLine(((double)(s2.Elapsed.TotalMilliseconds * 1000000) /
+                _max).ToString("0.00 ns"));
+            Console.ReadKey();
+        }
+
+
+    }
+    
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace regex4
+{
+    class Program
+    {
+        static bool IsValid1(string path)
+        {
+            return Regex.IsMatch(path, @"^[a-zA-Z0-9]*$");
+        }
+        static bool IsValid2(string path)
+        {
+            for (int i = 0; i < path.Length; i++)
+            {
+                switch (path[i])
+                {
+                    case 'a':
+                    case 'b':
+                    case 'c':
+                    case 'd':
+                    case 'e':
+                    case 'f':
+                    case 'g':
+                    case 'h':
+                    case 'i':
+                    case 'j':
+                    case 'k':
+                    case 'l':
+                    case 'm':
+                    case 'n':
+                    case 'o':
+                    case 'p':
+                    case 'q':
+                    case 'r':
+                    case 's':
+                    case 't':
+                    case 'u':
+                    case 'v':
+                    case 'w':
+                    case 'x':
+                    case 'y':
+                    case 'z':
+                    case 'A':
+                    case 'B':
+                    case 'C':
+                    case 'D':
+                    case 'E':
+                    case 'F':
+                    case 'G':
+                    case 'H':
+                    case 'I':
+                    case 'J':
+                    case 'K':
+                    case 'L':
+                    case 'M':
+                    case 'N':
+                    case 'O':
+                    case 'P':
+                    case 'Q':
+                    case 'R':
+                    case 'S':
+                    case 'T':
+                    case 'U':
+                    case 'V':
+                    case 'W':
+                    case 'X':
+                    case 'Y':
+                    case 'Z':
+                    case '0':
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '6':
+                    case '7':
+                    case '8':
+                    case '9':
+                        {
+                            continue;
+                        }
+                    default:
+                        {
+                            return false;
+                        }
+                }
+            }
+            return true;
+        }
+
+        const int _max = 1000000;
+        static void Main(string[] args)
+        {
+            var s1 = Stopwatch.StartNew();
+            for (int i = 0; i < _max; i++)
+            {
+                if (IsValid1("hello") == false || IsValid1("$bye") == true)
+                {
+                    return;
+                }
+            }
+            s1.Stop();
+            // Version 2: use for-loop.
+            var s2 = Stopwatch.StartNew();
+            for (int i = 0; i < _max; i++)
+            {
+                if (IsValid2("hello") == false || IsValid2("$bye") == true)
+                {
+                    return;
+                }
+            }
+            s2.Stop();
+            Console.WriteLine(((double)(s1.Elapsed.TotalMilliseconds * 1000000) /
+                _max).ToString("0.00 ns"));
+            Console.WriteLine(((double)(s2.Elapsed.TotalMilliseconds * 1000000) /
+                _max).ToString("0.00 ns"));
+            Console.ReadKey();
+        }
+    }
+
+
+}
