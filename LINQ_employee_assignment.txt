@@ -1,0 +1,159 @@
+//employee assignment
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LINQPROGRAM1
+{
+
+
+    public class Employee
+
+    {
+        public int EmployeeID { get; set; }
+        public string EmployeeName { get; set; }
+        public int EmployeeSal { get; set; }
+        public string EmployeeDesignation { get; set; }
+    }
+
+    public class Employee1
+    {
+        public int Employee1ID { get; set; }
+        public string Employee1Name { get; set; }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Implement the LINQ on Collection
+            IList<Employee> EmployeeList = new List<Employee>()
+            {
+                //4 students //4Id //4Name //4Age //4Batch
+                new Employee(){EmployeeID=1,EmployeeName="varsha",EmployeeSal=27000,EmployeeDesignation="entrepreneur"},
+                new Employee(){EmployeeID=11,EmployeeName="rekha",EmployeeSal=30000,EmployeeDesignation="AEE"},
+                new Employee(){EmployeeID=111,EmployeeName="madhu",EmployeeSal=20000,EmployeeDesignation="Developer"},
+                new Employee(){EmployeeID=1111,EmployeeName="ramya",EmployeeSal=40000,EmployeeDesignation="lecturer"},
+                new Employee(){EmployeeID=11111,EmployeeName="kuttu",EmployeeSal=45000,EmployeeDesignation="AE"},
+
+            };
+
+            IList<Employee1> EmployeeList1 = new List<Employee1>()
+            {
+                new Employee1(){Employee1ID=111,Employee1Name="shetty"},
+                new Employee1(){Employee1ID=11111,Employee1Name="sneha"},
+                new Employee1(){Employee1ID=11,Employee1Name="sudhee"},
+            };
+
+
+            //Applying LINQ Logic
+            var EmployeeName = EmployeeList.Where(e => e.EmployeeSal > 30000).Select(e => e).Where(et => et.EmployeeID > 11).Select(e => e.EmployeeName);
+            var EmployeeName1 = EmployeeList.Where(e => e.EmployeeID < 111).Select(e => e.EmployeeName);
+
+
+            var EmployeeName2 = from e in EmployeeList
+                                where e.EmployeeID > 104 && e.EmployeeID < 101
+                                select new { EmployeeName = e.EmployeeName };
+            EmployeeName2.ToList().ForEach(e => Console.WriteLine(e.EmployeeName));
+
+            //execution_GroupBy 
+            var EmployeeGroupByBatch = from e in EmployeeList
+                                       group e by e.EmployeeID into sb
+                                       orderby sb.Key
+                                       select new { sb.Key, sb };
+
+
+            //query_Groupby 
+            var EmployeesGroupByBatch1 = from e in EmployeeList
+                                         where e.EmployeeSal > 20000
+                                         where e.EmployeeID > 104 
+                                                                  
+                                         group e by e.EmployeeName into sb
+                                         orderby sb.Key
+                                         select new { sb.Key, sb };
+
+            //Outer Join
+            var EmployeeGroup1 = from et in EmployeeList1
+                                 join e in EmployeeList
+                                 on et.Employee1ID equals e.EmployeeID
+                                 into eg
+                                 select new
+                                 {
+                                     Employee1Name = et.Employee1Name,
+                                     Employee = eg
+                                 };
+
+
+
+            //Left Outer Join
+            var EmployeeGroup = from et in EmployeeList
+                                join e in EmployeeList
+                                on et.EmployeeID equals e.EmployeeID
+                                into eg
+                                select new
+                                {
+                                    EmployeeName = et.EmployeeName,
+                                    Employee = eg
+                                };
+
+
+
+            ////sorting
+            //var SotedEmployee = from e in EmployeeList1
+            //                    orderby e.Employee1ID, e.EmployeeSal
+            //                    select new
+            //                    {
+            //                        EmployeeName = e.EmployeeName,
+            //                        //EmployeeSal = e.Employeesal,
+            //                        Employee1ID = e.Employee1ID
+
+            //                    };
+            //SotedEmployee.Tolist().ForEach(e => Console.WriteLine("Employee Name:{0},Employee sal:{1},Employee1ID:{2}", e.EmployeeName, e.Emplloyeesal, e.Employee1ID));
+
+
+            foreach (var group in EmployeeGroup)
+            {
+                Console.WriteLine(group.EmployeeName);
+                group.Employee.ToList().ForEach(et => Console.WriteLine(et.EmployeeName));
+            }
+
+
+            foreach (var name in EmployeeName)
+            {
+                Console.WriteLine(name);
+            }
+
+            foreach (var name1 in EmployeeName1)
+            {
+                Console.WriteLine(name1);
+            }
+
+            foreach (var group in EmployeeGroupByBatch)
+            {
+                Console.WriteLine("EmployeeID{0}:" + group.Key);
+            }
+
+            foreach (var group in EmployeesGroupByBatch1)
+            {
+                Console.WriteLine("EmployeeName{0}:" + group.Key);
+            }
+
+
+
+            foreach (var name2 in EmployeeName2)
+            {
+                Console.WriteLine(name2);
+            }
+
+
+            Console.ReadLine();
+
+        }
+    }
+}
