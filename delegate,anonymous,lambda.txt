@@ -1,0 +1,146 @@
+
+//practice
+
+//anonymous 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace anonymous_method
+{
+    class Program
+    {
+        public delegate void Print(int value);//integer//named method(print)
+
+        static void Main(string[] args)
+        {
+
+            int i = 10;
+
+            Print prnt = delegate (int val)
+            {
+                val += i;
+                Console.WriteLine("Anonymous method: {0}", val);
+            };
+
+            prnt(100);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+//lambda
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lambda_ex
+{
+    
+
+    class Program
+    {
+
+
+        static void Main(string[] args)
+        {
+            //list to store numbers
+
+            List<int> numbers = new List<int>()
+            {
+                2,4,6,8,10,12,14,16,18,20
+            };
+
+            Console.WriteLine("the elements of list are:");
+            ////Console.ReadLine();
+
+            Console.WriteLine("-------------------------list-------------------------------------");
+
+            foreach (var num in numbers)
+            {
+                Console.WriteLine("{0}", num);
+                ////Console.ReadLine();
+            }
+
+            Console.WriteLine("---------------------------squares-----------------------------------");
+
+            var square = numbers.Select(x => x * x);
+            var cube = numbers.Select(x => x * x*x);//cube
+
+            foreach (var value in square)
+            {
+                Console.WriteLine("{0}", value);
+               
+            }
+
+            Console.WriteLine("----------------------------cubes----------------------------------");
+
+
+            foreach (var value in cube)
+            {
+                Console.WriteLine("{0}", value);
+
+            }
+
+            Console.ReadLine();
+
+        }
+        
+    }
+}
+
+
+
+
+
+
+//delegate
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lambda_ex
+{
+    public delegate string GreetinsDelegate(string str);  //define delegate
+
+    class Program
+    {
+
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hi Hyderabad");
+            GreetinsDelegate obj = name =>    //lambda operator
+
+            {
+                return "Kaumudi\n" + name + "DXCtechnology";
+            };
+
+            string str = obj.Invoke("HP_India\n");  //invoked the delegate
+            Console.WriteLine(str);
+            Console.ReadLine();
+
+
+        }
+    }
+}
+
+
+
+
+
+//anonymous

@@ -1,0 +1,128 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+//check readline properly
+
+namespace func_ex
+{
+    public delegate double AddnumsDelegate1(int x, float y, double z);
+    public delegate void Addnums2Delegate2(int x, float y, double z);
+    public delegate bool CheckLengthDelegate(string str);
+    public delegate double multnumsDelegate1(int x, int y, float z);
+    public delegate void multnums2Delegate2(int x, float y, double z);
+    public delegate bool CheckLength1Delegate(string str);
+
+    class Program
+    {
+        public static double Addnums(int x, float y, double z)// return type 1
+        {
+
+            return (x + y + z);
+            
+        }
+
+
+
+        public static void Addnums2(int x, float y, double z)//non return type 2
+        {
+
+            Console.WriteLine (x + y + z);
+            Console.ReadLine();
+
+        }
+
+
+
+        public static bool CheckLength(string str)//bool return type 1
+        {
+            if (str.Length > 4)
+
+                return true;
+
+            return false;
+
+           
+        }
+
+        public static double multnums(int x, int y, float z)//return type 2
+        {
+
+            return (x * y * z);
+
+        }
+
+
+
+        public static void multnums2(int x, float y, double z)//non return type 2
+        {
+
+            Console.WriteLine(x * y * z);
+            Console.ReadLine();
+
+        }
+
+        public static bool CheckLength1(string name1)//bool return type 2
+        {
+            if (name1.Length <= 4)
+
+                return true;
+
+            return false;
+
+
+        }
+
+
+
+
+
+        static void Main(string[] args)
+        {
+            //instantiate the delegates
+            AddnumsDelegate1 obj1 = new AddnumsDelegate1(Addnums);
+
+            double result = obj1.Invoke(10, 3.142f, 12345.12345678);
+            Console.WriteLine(result);
+           
+
+            Addnums2Delegate2 obj2 = new Addnums2Delegate2(Addnums2);//non returntype
+
+            obj2.Invoke(10, 3.142f, 12345.12345678);
+
+
+            CheckLengthDelegate obj3 = new CheckLengthDelegate(CheckLength);//new variable to store the value-return type
+
+            bool check = obj3.Invoke("kaumudi");
+            Console.WriteLine(check);
+            Console.ReadLine();
+
+            multnumsDelegate1 obj4 = new multnumsDelegate1(multnums);
+
+            double result1 = obj4.Invoke(10, 10, 3.142f);
+            Console.WriteLine(result1);
+
+
+            multnums2Delegate2 obj5 = new multnums2Delegate2(multnums2);//non returntype
+
+            obj5.Invoke(10, 3.142f, 12345.12345678);
+
+
+            CheckLength1Delegate obj6 = new CheckLengthDelegate(CheckLength);//new variable to store the value-return type
+
+            bool check1 = obj6.Invoke("Rekha");
+            Console.WriteLine(check1);
+            Console.ReadLine();
+
+
+
+
+
+        }
+
+        
+    }
+}
