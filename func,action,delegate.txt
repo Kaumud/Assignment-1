@@ -1,0 +1,67 @@
+//Func, Action and Predicate
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace generic_delegates//func ,action, predicate
+{
+
+    public delegate double multnumsDelegate1(int x, float y, double z);
+    public delegate void multnums2Delegate2(int x, float y, double z);
+    public delegate bool CheckLength1Delegate(string str);
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //instantiate the delegates
+
+
+            Func<int, float, double, double> obj1 = (x, y, z) => (x * y * z); // func generic delegate method
+            //return type
+            double result = obj1.Invoke(10, 3.142f, 12345.12345678);//return type requires variable to store
+            Console.WriteLine(result);
+
+
+
+            Action<int, float, double> obj2 =  (x, y, z) => Console.WriteLine(x * y * z);//action generic delegate method
+            //non return type
+           
+            obj2.Invoke(10, 3.142f, 12345.12345678);
+
+
+
+            Predicate<string> obj3 = (name) =>            //predicate generic delegate method
+
+            {
+                if (name.Length <= 4)
+
+                    return true;
+
+                return false;
+
+
+            };
+
+
+            bool check1 = obj3.Invoke("Rekha");
+            Console.WriteLine(check1);
+            Console.ReadKey();
+
+
+
+
+
+        }
+
+
+    }
+}
+
+
+
