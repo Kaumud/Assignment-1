@@ -1,0 +1,559 @@
+//////window forms assignment 1
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace anonymous_method_winform
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Button b = new Button();
+            b.Text = "Hello World";
+            b.Size = new Size(100, 50);
+            b.Location = new Point(200, 200);//try to put in centre 
+            this.Controls.Add(b);
+
+           
+
+            //b.Click += new EventHandler(button1_Click1);
+
+            //// try using delegate(anonymous method)
+
+            b.Click += delegate (object sender1, EventArgs e1)
+            {
+                System.Windows.Forms.MessageBox.Show("programming is fun!");
+            };
+
+            b.Click += delegate (object sender2, EventArgs e2)
+            {
+                System.Windows.Forms.MessageBox.Show("this is printing!");
+            };
+
+
+            b.Click += delegate (object sender3, EventArgs e3)
+            {
+                System.Windows.Forms.MessageBox.Show("this is printing again!");
+            };
+
+            b.Click += delegate (object sender4, EventArgs e4)
+            {
+                System.Windows.Forms.MessageBox.Show("yeyy! This is Crazy");
+            };
+
+
+            b.Click += delegate (object sender5, EventArgs e5)
+            {
+                System.Windows.Forms.MessageBox.Show("yeyy! This is printing Crazy");
+            };
+
+
+        }
+
+
+        //private void button1_Click1(object sender1, EventArgs e1)
+
+        //{
+        //    MessageBox.Show("Today is Thursday!!!");
+
+        //}
+
+
+    }
+}
+
+
+
+
+
+//////window forms assignment 2
+
+
+
+1.
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace anonymous_method_winform
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Button b = new Button();
+            b.Text = "Click me!";
+            b.Size = new Size(100, 50);
+            b.Location = new Point(200, 200);//try to put in centre 
+            this.Controls.Add(b);
+
+            this.Controls.Add(b);//contolling mechanism of button shoould go the center
+
+
+            // show the message
+            //  b.Click += new EventHandler(button1_Click1);
+            //Delegate with Anonymous method
+            b.Click += delegate (object sender1, EventArgs e1)///we are just passing paramters here
+            {
+                MessageBox.Show("Hello world!!");
+
+            };
+            //Method creation
+            //  private void button1_Click1(object sender1,EventArgs e1)
+            // {
+            //   MessageBox.Show("Hello World!!");
+            //}
+        }
+    }
+}
+
+
+
+
+
+
+2.
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace anonymous_method_winform
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Button b = new Button();
+            b.Text = "Click me!";
+            b.Size = new Size(100, 50);
+            b.Location = new Point(200, 200);//try to put in centre 
+            this.Controls.Add(b);
+
+            this.Controls.Add(b);//contolling mechanism of button shoould go the center
+
+
+            // show the message
+            //  b.Click += new EventHandler(button1_Click1);
+            //Delegate with Anonymous method
+            b.Click += delegate (object sender1, EventArgs e1)///we are just passing paramters here
+            {
+                MessageBox.Show("programming is fun!");
+
+            };
+            //Method creation
+            //  private void button1_Click1(object sender1,EventArgs e1)
+            // {
+            //   MessageBox.Show("programming is fun!");
+            //}
+        }
+    }
+}
+
+
+3.
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace anonymous_method_winform
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Button b = new Button();
+            b.Text = "Click me!";
+            b.Size = new Size(100, 50);
+            b.Location = new Point(200, 200);//try to put in centre 
+            this.Controls.Add(b);
+
+            this.Controls.Add(b);//contolling mechanism of button shoould go the center
+
+
+            // show the message
+            //  b.Click += new EventHandler(button1_Click1);
+            //Delegate with Anonymous method
+            b.Click += delegate (object sender1, EventArgs e1)///we are just passing paramters here
+            {
+                MessageBox.Show("This is printing!");
+
+            };
+            //Method creation
+            //  private void button1_Click1(object sender1,EventArgs e1)
+            // {
+            //   MessageBox.Show("This is printing!");
+            //}
+        }
+    }
+}
+
+
+
+4.
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace anonymous_method_winform
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Button b = new Button();
+            b.Text = "Click me!";
+            b.Size = new Size(100, 50);
+            b.Location = new Point(200, 200);//try to put in centre 
+            this.Controls.Add(b);
+
+            this.Controls.Add(b);//contolling mechanism of button shoould go the center
+
+
+            // show the message
+            //  b.Click += new EventHandler(button1_Click1);
+            //Delegate with Anonymous method
+            b.Click += delegate (object sender1, EventArgs e1)///we are just passing paramters here
+            {
+                MessageBox.Show("This is printing again!");
+
+            };
+            //Method creation
+            //  private void button1_Click1(object sender1,EventArgs e1)
+            // {
+            //   MessageBox.Show("This is printing again!");
+            //}
+        }
+    }
+}
+
+
+
+5.
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace anonymous_method_winform
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Button b = new Button();
+            b.Text = "Click me!";
+            b.Size = new Size(100, 50);
+            b.Location = new Point(200, 200);//try to put in centre 
+            this.Controls.Add(b);
+
+            this.Controls.Add(b);//contolling mechanism of button shoould go the center
+
+
+            // show the message
+            //  b.Click += new EventHandler(button1_Click1);
+            //Delegate with Anonymous method
+            b.Click += delegate (object sender1, EventArgs e1)///we are just passing paramters here
+            {
+                MessageBox.Show("yeyy! This is crazy");
+
+            };
+            //Method creation
+            //  private void button1_Click1(object sender1,EventArgs e1)
+            // {
+            //   MessageBox.Show("yeyy! This is crazy");
+            //}
+        }
+    }
+}
+
+
+
+6.
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace anonymous_method_winform
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Button b = new Button();
+            b.Text = "Click me!";
+            b.Size = new Size(100, 50);
+            b.Location = new Point(200, 200);//try to put in centre 
+            this.Controls.Add(b);
+
+            this.Controls.Add(b);//contolling mechanism of button shoould go the center
+
+
+            // show the message
+            //  b.Click += new EventHandler(button1_Click1);
+            //Delegate with Anonymous method
+            b.Click += delegate (object sender1, EventArgs e1)///we are just passing paramters here
+            {
+                MessageBox.Show("yeyy! This is printing crazy");
+
+            };
+            //Method creation
+            //  private void button1_Click1(object sender1,EventArgs e1)
+            // {
+            //   MessageBox.Show("yeyy! This is printing crazy");
+            //}
+        }
+    }
+}
+
+
+
+
+
+//////////practice
+
+
+
+//example.1
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace anonymous_method
+{
+    class Program
+    {
+        public delegate void ex1(int value);//integer//named
+
+        static void Main(string[] args)
+        {
+
+            int i = 10;
+
+            Print ex1 = delegate (int val)
+            {
+                val += i;
+                Console.WriteLine("Anonymous method: {0}", val);
+            };
+
+            ex1(100);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+////example.2  string
+
+
+
+
+
+//class Program
+//{
+
+
+
+//    public delegate void bestfrnd(string frnd);
+
+//static public void Main()
+
+//{
+
+
+
+//    // An anonymous method with one parameter (string)
+
+//    petanim f = delegate (string myfrnd) //string
+
+//    {
+
+//        Console.WriteLine("My favorite pet is: {0}",
+
+//                                             myfrnd);
+
+//        Console.ReadLine();
+
+//    };
+
+//    f("Rekha");
+
+//}
+//}
+
+
+
+
+
+
+////Example 3: Anonymous Method as Parameter(int)
+
+
+
+//public delegate void Print(int value);
+
+//class Program
+//{
+//    public static void PrintHelperMethod(Print printDel, int val)  //as parameter
+//    {
+//        val += 10;
+//        printDel(val);
+//    }
+
+//    static void Main(string[] args)
+//    {
+//        PrintHelperMethod(delegate (int val)
+//        {
+//            Console.WriteLine("Anonymous method: {0}", val);
+//            Console.ReadLine();
+//
+//        }, 100);
+
+//             
+//    }
+//}
+
+
+
+
+
+
+//example 4
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    delegate void Del(int i, double j);
+
+    class MathClass
+    {
+        static void Main()
+        {
+            MathClass m = new MathClass();
+
+            // Delegate instantiation using "MultiplyNumbers"
+            Del d = m.MultiplyNumbers;
+
+            // Invoke the delegate object.
+            Console.WriteLine("Invoking the delegate using 'MultiplyNumbers':");
+            for (int i = 1; i <= 5; i++)
+            {
+                d(i, 2);
+            }
+
+           
+            Console.WriteLine("multiples of 2");
+            Console.ReadKey();
+        }
+
+        // Declare the associated method.
+        void MultiplyNumbers(int m, double n)
+        {
+            Console.Write(m * n + " ");
+        }
+    }
+
+}
+
+
+
+
