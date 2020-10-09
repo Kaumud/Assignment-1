@@ -1,0 +1,169 @@
+//singlethread
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace singlethread1
+{
+
+    class mythreads
+    {
+        public double sumThread1(int num)
+        {
+            int rem;
+            double sum = 0;
+            while(num!=0)
+            {
+                rem = num % 10;
+                sum = sum + rem;
+                num = num / 10;
+            }
+            
+            return sum;
+        }
+
+        public string cancatthread2(string s1,string s2)
+        {
+            return s1 + s2;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Main Thread Started");
+            mythreads obj = new mythreads();
+            double result = 0;
+
+            Thread T1 = new Thread(() => {result= obj.sumThread1(); }65857);
+
+            T1.Start();
+            T1.Join();
+
+            Console.WriteLine(result);
+            Console.WriteLine("thread 1 execution completed");
+            Console.WriteLine("----------------------------------------------------------------------------------");
+
+            string res = null;
+            Thread T2 = new Thread(() => { res=obj.cancatthread2("rekha", "mb"); });
+            
+            T2.Start();
+            T2.Join();
+
+            Console.WriteLine(res);
+            Console.WriteLine("thread 2 execution completed");
+            Console.WriteLine("----------------------------------------------------------------------------------");
+
+            Console.WriteLine();
+            Console.WriteLine("Main Thread completed");
+            Console.ReadKey();
+
+
+        }
+    }
+}
+
+
+
+
+
+
+//multithread
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace multithread
+{
+    class mythreads
+    {
+        public int sumThread1(int n1,int n2)
+        {
+            
+            return n1 + n2;
+        }
+
+        public int strlenthred2(string str)
+        {
+            Thread.Sleep(5000);
+            return str.Length;
+        }
+
+        public string cancatthread2(string s1, string s2)
+        {
+            return s1 + s2;
+        }
+        public bool isodd(int num)
+        {
+            Thread.Sleep(8000);
+            if(num%2==0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+
+            }
+        }
+
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            mythreads obj = new mythreads();
+            int sum = 0;
+            int length = 0;
+            string s = null;
+            bool x = true;
+
+            Thread T1 = new Thread(() => { sum = obj.sumThread1(22, 44); });
+            Thread T2 = new Thread(() => { length = obj.strlenthred2("rekha"); });
+            Thread T3 = new Thread(() =>{ s = obj.cancatthread2("rekha", "mb"); });
+            Thread T4 = new Thread(() => { x = obj.isodd(45678); });
+
+            T1.Start();
+            T2.Start();
+            T3.Start();
+            T4.Start();
+
+            T1.Join();
+            T2.Join();
+            T3.Join();
+            T4.Join();
+
+            Console.WriteLine("the sum of two numbers is {0}",sum);
+	    Console.WriteLine("----------------------------------------------------------------------------------");
+            Console.WriteLine("the length of the string is {0}",length);
+	    Console.WriteLine("----------------------------------------------------------------------------------");
+            Console.WriteLine("the cancatenated string is {0} ",s);
+	    Console.WriteLine("----------------------------------------------------------------------------------");
+            Console.WriteLine("the given number is odd(true/false) {0}",x);
+	    Console.WriteLine("----------------------------------------------------------------------------------");
+            Console.ReadKey();
+
+
+
+
+        }
+    }
+}
+
+
+
+
