@@ -1,0 +1,771 @@
+/////////10th oct practice
+
+
+
+
+
+/////Events
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace @event
+{
+    public delegate void dg_OddNumber(); //Declared Delegate    
+    class event1
+    {
+        //This is Subscriber Class
+    
+            static void Main(string[] args)
+            {
+                OddNumbers O = new OddNumbers();
+            //Event gets binded with delegates or registered with delegate
+            O.ev_OddNumber += EventMessage;
+                O.Odd();
+                Console.ReadLine();
+            }
+            //Delegates calls this method when event raised.  
+            static void EventMessage()
+            {
+                Console.WriteLine("***Event Executed : This is Odd Number***");
+            }
+        }
+        //This is Publisher Class
+        class OddNumbers
+        {
+            
+            public event dg_OddNumber ev_OddNumber; //Declared Events
+
+            public void Odd()
+            {
+
+            //Check if result is odd number then raise event
+            
+                if  (ev_OddNumber != null)
+                {
+                    ev_OddNumber(); //Raised Event
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace @event2
+{
+    
+class Program
+{
+    public static void Main()
+    {
+        ProcessBusinessLogic bl = new ProcessBusinessLogic();
+        bl.ProcessCompleted += bl_ProcessCompleted; // register with an event
+        bl.StartProcess();
+    }
+
+    // event handler
+    public static void bl_ProcessCompleted(object sender, bool IsSuccessful)
+    {
+        Console.WriteLine("Process " + (IsSuccessful? "Completed Successfully": "failed"));
+    }
+}
+
+public class ProcessBusinessLogic
+{
+    // declaring an event using built-in EventHandler
+    public event EventHandler<bool> ProcessCompleted; 
+
+    public void StartProcess()
+    {
+        try
+        {
+            Console.WriteLine("Process Started!");
+			
+            // some code here..
+
+            OnProcessCompleted(true);
+        }
+        catch(Exception ex)
+        {
+            OnProcessCompleted(false);
+        }
+    }
+
+    protected virtual void OnProcessCompleted(bool IsSuccessful)
+    {
+        ProcessCompleted?.Invoke(this, IsSuccessful);
+    }
+  }
+
+}
+
+
+
+
+/////Jointhread
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace jointhread1
+{
+    class jointhread
+    {
+        static void Thread1()
+        {
+            Console.WriteLine("Thread 1 starting");
+            for (int i = 1; i < 15; i++)
+            {
+                Console.WriteLine("Thread1 is executed" + i);
+            }
+            Console.WriteLine("thread 1 is exiting the run");
+        }
+        static void Thread2()
+        {
+            Console.WriteLine("Thread 2 starting");
+            for (int i = 1; i < 15; i++)
+            {
+                Console.WriteLine("Thread2 is executed" + i);
+            }
+            Console.WriteLine("thread 2 is exiting the run");
+        }
+        static void Thread3()
+        {
+            Console.WriteLine("Thread 3 starting");
+            for (int i = 1; i < 15; i++)
+            {
+                Console.WriteLine("Thread3 is executed" + i);
+            }
+            Console.WriteLine("thread 3 is exiting the run");
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("demonstration on JOIN Method in Multhreading");
+            Console.WriteLine("Main Thread Started");
+
+            Thread T1 = new Thread(Thread1);
+            Thread T2 = new Thread(Thread2);
+            Thread T3 = new Thread(Thread3);
+            T1.Start(); T2.Start(); T3.Start();
+            T1.Join(); T2.Join(); T3.Join();
+
+            Console.WriteLine("main thread is exiting");
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+/////////Lock thread
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+namespace jointhread2
+{
+    
+
+    class Lockthread2
+    {
+        
+        
+            public void display()
+            {
+            lock (this)
+            {
+                Console.WriteLine("csharp is an");
+
+                Thread.Sleep(5000);
+
+                Console.WriteLine("object oriented language");
+            }
+            }
+        
+            static void Main(string[] args)
+        {
+            Lockthread2 obj = new Lockthread2();
+            //instantiated the thread with a method reference
+            Thread t1=new Thread(obj.display);
+            Thread t2 = new Thread(obj.display);
+            Thread t3 = new Thread(obj.display);
+            Thread t4 = new Thread(obj.display);
+            Thread t5 = new Thread(obj.display);
+            t1.Start();t2.Start();t3.Start(); t4.Start(); t5.Start();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+///////Performance prog
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Diagnostics;
+
+namespace performance
+{
+    class performance
+    {
+        public static int Thread1(int x, int y)
+        {
+            long count = 0;
+            for (int i = 0; i <= 1000000000; i++)
+            {
+                count++;
+
+            }
+            Console.WriteLine("number of counts" + count);
+            return x*y;
+            
+        }
+        public static string Thread2(string str)
+        {
+            long count = 0;
+            for (int i = 0; i <= 1000000000; i++)
+            {
+                count++;
+
+            }
+
+            Console.WriteLine("number of counts" + count);
+            return str;
+        }
+        static void Main(string[] args)
+        {
+            Stopwatch s1 = new Stopwatch();
+            s1.Start();
+            
+            Thread T1 = new Thread(delegate ()
+            {
+                Console.WriteLine(Thread1(3,4));
+            });//instantiated with the method thread1
+            Thread T2 = new Thread(delegate ()
+            {
+                Console.WriteLine(Thread2("thread 2 exited"));
+            });//instantiated with the method thread2
+            T1.Start(); T2.Start();
+            T1.Join(); T2.Join();
+            Console.WriteLine("stopwatch is started");
+            s1.Stop();
+            Console.WriteLine(s1.ElapsedMilliseconds);
+            Console.WriteLine("stopwatch is stopped");
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+//priorities progs
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace priorities1
+{
+    class priority2
+    {
+        static long count1, count2;
+        public static void incrementcount1()
+        {
+            while (true)//indefinite loop
+
+                count1 += 1;
+
+
+        }
+        public static void incrementcount2()
+        {
+            while (true)//indefinite loop
+
+                count2 += 1;
+
+
+        }
+        static void Main(string[] args)
+        {
+            Thread T1 = new Thread(incrementcount1);//invoke the method increment count1
+            Thread T2 = new Thread(incrementcount2);//invoke the method increment count2
+            Console.WriteLine("main thread going to sleep for 5seconds");
+            Thread.Sleep(5000);
+            Console.WriteLine("main thread wokeup");
+
+            T1.Priority = ThreadPriority.Highest;//lowest - cpu utilization is  lowest,time taken is least
+            T2.Priority = ThreadPriority.Lowest;//highest -is time allocated to thread and method involved will be using more cpu utilization on method to perform specific task
+            T1.Start(); T2.Start();
+            T1.Abort(); T2.Abort();
+            T1.Join(); T2.Join();//if we have used join method main method will have highest priority compared to other methods
+
+            Console.WriteLine("count1 is Highest: " + count1);
+            Console.WriteLine("count2 is Lowest: " + count2);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace priorities1
+{
+    class threadpriority
+    {
+        static long count1, count2;
+        public static void incrementcount1()
+        {
+            while (true)//indefinite loop
+
+                count1 += 1;
+
+
+        }
+        public static void incrementcount2()
+        {
+            while (true)//indefinite loop
+
+                count2 += 1;
+
+
+        }
+        static void Main(string[] args)
+        {
+            Thread T1 = new Thread(incrementcount1);//invoke the method increment count1
+            Thread T2 = new Thread(incrementcount2);//invoke the method increment count2
+            Console.WriteLine("main thread going to sleep for 5seconds");
+            Thread.Sleep(5000);
+            Console.WriteLine("main thread wokeup");
+            T1.Priority = ThreadPriority.Lowest;//lowest - cpu utilization is  lowest,time taken is least
+            T2.Priority = ThreadPriority.Highest;//highest -is time allocated to thread and method involved will be using more cpu utilization on method to perform specific task
+
+
+          
+            T1.Start(); T2.Start();
+            T1.Abort(); T2.Abort();
+            T1.Join(); T2.Join();//if we have used join method main method will have highest priority compared to other methods
+            Console.WriteLine("count1 is Lowest: " + count1);
+            Console.WriteLine("count2 is Highest: " + count2);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+namespace priorities1
+{
+    class priority3
+    {
+        static long count1, count2;
+        public static void incrementcount1()
+        {
+            while (true)//indefinite loop
+
+                count1 += 1;
+
+
+        }
+        public static void incrementcount2()
+        {
+            while (true)//indefinite loop
+
+                count2 += 1;
+
+
+        }
+        static void Main(string[] args)
+        {
+            Thread T1 = new Thread(incrementcount1);//invoke the method increment count1
+            Thread T2 = new Thread(incrementcount2);//invoke the method increment count2
+            Console.WriteLine("main thread going to sleep for 5seconds");
+            Thread.Sleep(5000);
+            Console.WriteLine("main thread wokeup");
+
+            T1.Priority = ThreadPriority.Lowest;//lowest - cpu utilization is  lowest,time taken is least
+            T2.Priority = ThreadPriority.Normal;//highest -is time allocated to thread and method involved will be using more cpu utilization on method to perform specific task
+            T1.Start(); T2.Start();
+            T1.Abort(); T2.Abort();
+            T1.Join(); T2.Join();//if we have used join method main method will have highest priority compared to other methods
+
+            Console.WriteLine("count1 is Lowest: " + count1);
+            Console.WriteLine("count2 is Normal: " + count2);
+
+            Console.ReadLine();
+        }
+        }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace priorities1
+{
+    class priority4
+    {
+        static long count1, count2;
+        public static void incrementcount1()
+        {
+            while (true)//indefinite loop
+
+                count1 += 1;
+
+
+        }
+        public static void incrementcount2()
+        {
+            while (true)//indefinite loop
+
+                count2 += 1;
+
+
+        }
+        static void Main(string[] args)
+        {
+            Thread T1 = new Thread(incrementcount1);//invoke the method increment count1
+            Thread T2 = new Thread(incrementcount2);//invoke the method increment count2
+            Console.WriteLine("main thread going to sleep for 5seconds");
+            Thread.Sleep(5000);
+            Console.WriteLine("main thread wokeup");
+
+            T1.Priority = ThreadPriority.Normal;//lowest - cpu utilization is  lowest,time taken is least
+            T2.Priority = ThreadPriority.Lowest;//highest -is time allocated to thread and method involved will be using more cpu utilization on method to perform specific task
+            T1.Start(); T2.Start();
+            T1.Abort(); T2.Abort();
+            T1.Join(); T2.Join();//if we have used join method main method will have highest priority compared to other methods
+
+            Console.WriteLine("count1 is Normal: " + count1);
+            Console.WriteLine("count2 is Lowest: " + count2);
+
+            Console.ReadLine();
+        }
+        }
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+
+namespace priorities1
+{
+    class priority5
+    {
+        static long count1, count2;
+        public static void incrementcount1()
+        {
+            while (true)//indefinite loop
+
+                count1 += 1;
+
+
+        }
+        public static void incrementcount2()
+        {
+            while (true)//indefinite loop
+
+                count2 += 1;
+
+
+        }
+        static void Main(string[] args)
+        {
+            Thread T1 = new Thread(incrementcount1);//invoke the method increment count1
+            Thread T2 = new Thread(incrementcount2);//invoke the method increment count2
+            Console.WriteLine("main thread going to sleep for 5seconds");
+            Thread.Sleep(5000);
+            Console.WriteLine("main thread wokeup");
+
+            T1.Priority = ThreadPriority.Highest;//lowest - cpu utilization is  lowest,time taken is least
+            T2.Priority = ThreadPriority.Normal;//highest -is time allocated to thread and method involved will be using more cpu utilization on method to perform specific task
+            T1.Start(); T2.Start();
+            T1.Abort(); T2.Abort();
+            T1.Join(); T2.Join();//if we have used join method main method will have highest priority compared to other methods
+
+            Console.WriteLine("count1 is Highest: " + count1);
+            Console.WriteLine("count2 is Normal: " + count2);
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace priorities1
+{
+    class priority6
+    {
+        static long count1, count2;
+        public static void incrementcount1()
+        {
+            while (true)//indefinite loop
+
+                count1 += 1;
+
+
+        }
+        public static void incrementcount2()
+        {
+            while (true)//indefinite loop
+
+                count2 += 1;
+
+
+        }
+        static void Main(string[] args)
+        {
+            Thread T1 = new Thread(incrementcount1);//invoke the method increment count1
+            Thread T2 = new Thread(incrementcount2);//invoke the method increment count2
+            Console.WriteLine("main thread going to sleep for 5seconds");
+            Thread.Sleep(5000);
+            Console.WriteLine("main thread wokeup");
+
+            T1.Priority = ThreadPriority.Normal;//lowest - cpu utilization is  lowest,time taken is least
+            T2.Priority = ThreadPriority.Highest;//highest -is time allocated to thread and method involved will be using more cpu utilization on method to perform specific task
+            T1.Start(); T2.Start();
+            T1.Abort(); T2.Abort();
+            T1.Join(); T2.Join();//if we have used join method main method will have highest priority compared to other methods
+
+            Console.WriteLine("count1 is Normal: " + count1);
+            Console.WriteLine("count2 is Highest: " + count2);
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+namespace priorities1
+{
+    class priority7
+    {
+        static long count1, count2;
+        public static void incrementcount1()
+        {
+            while (true)//indefinite loop
+
+                count1 += 1;
+
+
+        }
+        public static void incrementcount2()
+        {
+            while (true)//indefinite loop
+
+                count2 += 1;
+
+
+        }
+        static void Main(string[] args)
+        {
+            Thread T1 = new Thread(incrementcount1);//invoke the method increment count1
+            Thread T2 = new Thread(incrementcount2);//invoke the method increment count2
+            Console.WriteLine("main thread going to sleep for 5seconds");
+            Thread.Sleep(5000);
+            Console.WriteLine("main thread wokeup");
+
+            T1.Priority = ThreadPriority.AboveNormal;//lowest - cpu utilization is  lowest,time taken is least
+            T2.Priority = ThreadPriority.BelowNormal;//highest -is time allocated to thread and method involved will be using more cpu utilization on method to perform specific task
+            T1.Start(); T2.Start();
+            T1.Abort(); T2.Abort();
+            T1.Join(); T2.Join();//if we have used join method main method will have highest priority compared to other methods
+
+            Console.WriteLine("count1 is Above Normal: " + count1);
+            Console.WriteLine("count2 is Below Normal: " + count2);
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace priorities1
+{
+    class priority8
+    {
+        static long count1, count2;
+        public static void incrementcount1()
+        {
+            while (true)//indefinite loop
+
+                count1 += 1;
+
+
+        }
+        public static void incrementcount2()
+        {
+            while (true)//indefinite loop
+
+                count2 += 1;
+
+
+        }
+        static void Main(string[] args)
+        {
+            Thread T1 = new Thread(incrementcount1);//invoke the method increment count1
+            Thread T2 = new Thread(incrementcount2);//invoke the method increment count2
+            Console.WriteLine("main thread going to sleep for 5seconds");
+            Thread.Sleep(5000);
+            Console.WriteLine("main thread wokeup");
+
+            T1.Priority = ThreadPriority.BelowNormal;//lowest - cpu utilization is  lowest,time taken is least
+            T2.Priority = ThreadPriority.AboveNormal;//highest -is time allocated to thread and method involved will be using more cpu utilization on method to perform specific task
+            T1.Start(); T2.Start();
+            T1.Abort(); T2.Abort();
+            T1.Join(); T2.Join();//if we have used join method main method will have highest priority compared to other methods
+
+            Console.WriteLine("count1 is Below Normal: " + count1);
+            Console.WriteLine("count2 is Above Normal: " + count2);
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace priorities1
+{
+    class priority9
+    {
+        static long count1, count2;
+        public static void incrementcount1()
+        {
+            while (true)//indefinite loop
+
+                count1 += 1;
+
+
+        }
+        public static void incrementcount2()
+        {
+            while (true)//indefinite loop
+
+                count2 += 1;
+
+
+        }
+        static void Main(string[] args)
+        {
+            Thread T1 = new Thread(incrementcount1);//invoke the method increment count1
+            Thread T2 = new Thread(incrementcount2);//invoke the method increment count2
+            Console.WriteLine("main thread going to sleep for 5seconds");
+            Thread.Sleep(5000);
+            Console.WriteLine("main thread wokeup");
+
+            T1.Priority = ThreadPriority.Normal;//lowest - cpu utilization is  lowest,time taken is least
+            T2.Priority = ThreadPriority.Normal;//highest -is time allocated to thread and method involved will be using more cpu utilization on method to perform specific task
+            T1.Start(); T2.Start();
+            T1.Abort(); T2.Abort();
+            T1.Join(); T2.Join();//if we have used join method main method will have highest priority compared to other methods
+
+            Console.WriteLine("count1 is Normal: " + count1);
+            Console.WriteLine("count2 is Normal: " + count2);
+
+            Console.ReadLine();
+        }
+    }
+}
+
