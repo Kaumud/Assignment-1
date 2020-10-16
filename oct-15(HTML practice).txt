@@ -1,0 +1,504 @@
+/////////Object creation
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>nested for loop</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        document.write("------------------literals----------------------------<br>")
+
+        student = { id: 15, name: "Kaumudi K M",age:22,branch:"ECE",place:"Tumkur" };
+        document.write(student.id + "<br>");
+        document.write(student.name + "<br>");
+        document.write(student.age + "<br>");
+        document.write(student.branch + "<br>");
+        document.write(student.place + "<br>");
+
+
+        document.write("--------------------------------------------------------<br>")
+
+        document.write("---------------------new keyword--------------------<br>")
+
+        var employee = new Object();
+        employee.id = 100;
+        employee.name = "Rekha";
+        employee.hr = "Alex";
+        employee.techlead = "Ramya";
+        employee.techname = "dotnet";
+
+
+
+        document.write(employee.id + "<br>");
+        document.write(employee.name + "<br>");
+        document.write(employee.hr + "<br>");
+        document.write(employee.techlead + "<br>");
+        document.write(employee.techname + "<br>");
+
+
+        document.write("----------------------------------------------------<br>")
+
+        document.write("------------------constructor--------------------<br>")
+
+
+        function group(id, team, college, batch)
+        {
+            this.id = id;
+            this.team = team;
+            this.college = college;
+            this.batch = batch;
+        }
+
+        group = new group(7, "RAINBOW", "UBDT", 2020);
+        document.write(group.id + "<br>");
+        document.write(group.team + "<br>");
+        document.write(group.college + "<br>");
+        document.write(group.batch + "<br>");
+
+
+        document.write("---------------------------------------------------<br>")
+
+
+
+
+    </script>
+
+</body>
+</html>
+
+
+
+///patterns
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+
+        for (var i = 1; i <= 5; i++) {
+            for (var j = 1; j <= 5; j++) {
+                if (i == 1 || i == 5 || j == 1 || j == 5)
+                    document.write("*");
+                else
+                    document.write("&nbsp&nbsp")
+            };
+            document.write("<br>");
+        };
+
+    </script>
+    
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <script>
+
+        for (var i = 1; i <= 8; i++) {
+            for (var j = 1; j <= 8; j++) {
+                if (i == j || i == (8 - i + 1))
+                    document.write("*");
+                else
+                    document.write("   ")
+            };
+            document.write("<br>");
+        };
+
+    </script>
+
+
+
+</body>
+</html>
+
+
+
+
+//////array
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <script>
+
+        var a = 10;
+        document.write("value of a" + a + "<br>");
+
+        document.write("---------------------literal-------------------------------<br>");
+
+        var marks = [11, 22, 33, 44];
+        document.write("value of a-" + marks[0] +"<br>");
+        document.write("value of a-" + marks[1] + "<br>");
+        document.write("value of a-" + marks[2] + "<br>");
+        document.write("value of a-" + marks[3] + "<br>");
+
+        document.write("----------------------------------------------------<br>");
+
+        document.write("---------------------using for loop-----------------<br>");
+
+        for (var i = 0; i < marks.length; i++)
+        {
+            document.write("marks are" + marks[i] + "<br><br>");
+        }
+
+
+    </script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Find the min/max element
+
+        of an Array using JavaScript
+
+    </title>
+</head>
+
+<body>
+
+    <b>
+        Find the min/max element of
+
+        an Array using JavaScript
+    </b>
+
+    <p>
+        Click on the Click button below to find out the minimum,maximum,total of the array
+        
+        Click on the Double Click button below
+        Click on the mouse over button below 
+        Click on the mouse out button below 
+
+    </p>
+
+    <p>
+        Minimum element is: <span class="min">
+        </span>
+        <br>Maximum Element is: <span class="max">
+        </span>
+        <br>Total Element is: <span class="total">
+        </span>
+       
+        
+
+
+    </p>
+    <button onclick="myclick()">
+        Click
+
+    </button>
+
+    <button ondbclick="mydoubleclick()">
+        Double Click
+
+    </button>
+
+    <button onmouseover="mymouseover()">
+        mouse over
+
+    </button>
+
+    <button onmouseout="mymouseout()">
+        mouse out
+
+    </button>
+
+    <input type="text" name="u" onkeypress="">
+
+    <script>
+
+        function myclick() {
+
+            array = [50, 50, 40, 70, 40];
+
+            minValue = Math.min(...array);
+
+            maxValue = Math.max(...array);
+
+            var total = 0;
+            for (var i = 0; i < array.length; i++) { total += array[i]; }
+            
+
+        function mydoubleclick()
+            {
+                alert("hello you have double clicked");
+            }
+
+
+            function mymouseover()
+            {
+                alert("hello  mouse over ");
+            }
+
+
+            function mymouseout()
+            {
+                alert("hello mouse out");
+            }
+
+
+            document.querySelector(
+
+                '.min').textContent = minValue;
+
+            document.querySelector(
+
+                '.max').textContent = maxValue;
+
+            document.querySelector(
+
+                '.total').textContent = total;
+           
+
+
+            document.querySelector(
+
+                '.dc').textContent = minValue;
+
+
+        }
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+
+        var names = new Array();
+        names[0] = "Kaumudi";
+        names[1] = "Rekha";
+
+
+        document.write(names.length + "<br>");
+        document.write("---------------------------------<br>");
+
+        var marks = new Array(15, 30, 45);
+        for (var i = 0; i < marks.length; i++)
+        {
+
+            document.write(marks[i] + "<br>");
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>
+
+
+
+////methods
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>The JavaScript <i>this</i> Keyword</h2>
+    <p>
+        In this example, <b>this</b> represents the <b>
+            person</<!DOCTYPE html>
+           
+
+
+                <h2>The JavaScript <i>this</i> Keyword</h2>
+<p>In this example, <b>this</b> represents the <b>person</b> object.</p>
+<p>Because the person object "owns" the fullName method.</p>
+
+<p id="demo"></p>
+
+
+<script>
+
+    // Create an object:
+    var person = {
+        firstName: "John",
+        lastName: "Doe",
+        id: 5566, b> object.</p>
+            <p>Because the person object "owns" the fullName method.</p>
+
+            <p id="demo"></p>
+
+            <script>
+                // Create an object:
+                var person = {
+                    firstName: "Kaumudi",
+            lastName : "K M",
+            id     : 15,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+                          }
+                        };
+
+                        // Display data from the object:
+                        document.getElementById("demo").innerHTML = person.fullName();
+</script>
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>The JavaScript <i>this</i> Keyword</h2>
+    <p>
+        In this example, <b>this</b> represents the <b>
+            person</<!DOCTYPE html>
+            <html>
+            <body>
+                <h2>The JavaScript <i>this</i> Keyword</h2>
+<p>In this example, <b>this</b> represents the <b>person</b> object.</p>
+<p>Because the person object "owns" the fullName method.</p>
+<p id="demo"></p>
+<script>
+
+    // Create an object:
+var person = {
+            firstName: "John",
+        lastName : "Doe",
+id     : 5566,b> object.</p>
+    <p>Because the person object "owns" the fullName method.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        // Create an object:
+        var person = {
+            firstName: "John",
+        lastName : "Doe",
+        id     : 5566,
+fullName : function() {
+return this.firstName + " " + this.lastName;
+      }
+    };
+
+    // Display data from the object:
+    document.getElementById("demo").innerHTML = person.fullName();
+</script>
+
+
+
+///length of the string
+
+
+<!DOCTYPE html>
+
+    <body>
+        <html>
+
+            th property returns the length of a string:</p>
+
+        <p id="demo"></p>
+        <script>
+            var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var sln = txt.length;
+            document.getElementById("alphabets").innerHTML = sln;
+
+</script>
+</html>
+
+</body>
+
+
+///date
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>JavaScript new Date()</h2>
+    <p id="demo"></p>
+    <scrip<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript new Date()</h2>
+
+<p id="demo"></p>
+
+<script>
+var d = new Date();
+document.getElementById("demo").innerHTML = d;
+</script>
+
+</body>
+</html>
+t>
+var d = new Date();
+document.getElementById("demo").innerHTML = d;
+</script>
+
+</body>
+</html>
+
+
+
+///getelementbytagname
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <p>An unordered list:</p>
+    <ul>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul>
+    <p>Click the button to display the innerHTML of the second li element (index 1).</p>
+    <button onclick="myFunction()">Try it</button>
+    <p id="demo"></p>
+    <script>
+        function myFunction() {
+            var x = document.getElementsByTagName("LI");
+            document.getElementById("demo").innerHTML = x[1].innerHTML;
+        }
+    </script>
+</body>
+</html>
+
