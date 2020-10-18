@@ -1,0 +1,281 @@
+///HTML Practice
+
+
+animate
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#box").animate({height: "300px"});
+  });
+  $("#btn2").click(function(){
+    $("#box").animate({height: "100px"});
+  });
+});
+    </script>
+</head>
+<body>
+
+    <button id="btn1">Animate height</button>
+    <button id="btn2">Reset height</button>
+
+    <div id="box" style="background:#98bf21;height:100px;width:100px;margin:6px;"></div>
+
+</body>
+</html>
+
+
+
+animation
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("div").animate({ left: '250px' });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <button>Start Animation</button>
+
+    <p>By default, all HTML elements have a static position, and cannot be moved. To manipulate the position, remember to first set the CSS position property of the element to relative, fixed, or absolute!</p>
+
+    <div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>
+
+</body>
+</html>
+
+
+
+clear queue
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+$(document).ready(function(){
+  $("#start").click(function(){
+    $("div").animate({height: 300}, 1500);
+    $("div").animate({width: 300}, 1500);
+    $("div").animate({height: 100}, 1500);
+    $("div").animate({width: 100}, 1500);
+  });
+  $("#stop").click(function(){
+    $("div").clearQueue();
+  });
+});
+    </script>
+</head>
+<body>
+
+    <button id="start">Start Animation</button>
+    <button id="stop">Stop Animation</button>
+    <br><br>
+
+    <div style="background:red;height:100px;width:100px;"></div>
+
+</body>
+</html>
+
+
+
+effect_delay
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#div1").delay("slow").fadeIn();
+    $("#div2").delay("fast").fadeIn();
+    $("#div3").delay(800).fadeIn();
+    $("#div4").delay(2000).fadeIn();
+    $("#div5").delay(4000).fadeIn();
+  });
+});
+    </script>
+</head>
+<body>
+
+    <p>This example sets different speed values for the delay() method.</p>
+    <button>Click to fade in boxes with a delay</button>
+    <br><br>
+
+    <div id="div1" style="width:90px;height:90px;display:none;background-color:black;"></div><br>
+    <div id="div2" style="width:90px;height:90px;display:none;background-color:green;"></div><br>
+    <div id="div3" style="width:90px;height:90px;display:none;background-color:blue;"></div><br>
+    <div id="div4" style="width:90px;height:90px;display:none;background-color:red;"></div><br>
+    <div id="div5" style="width:90px;height:90px;display:none;background-color:purple;"></div><br>
+
+</body>
+
+
+
+
+fading
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#div1").fadeIn();
+    $("#div2").fadeIn("slow");
+    $("#div3").fadeIn(3000);
+  });
+});
+    </script>
+</head>
+<body>
+
+    <p>Demonstrate fadeIn() with different parameters.</p>
+
+    <button>Click to fade in boxes</button><br><br>
+
+    <div id="div1" style="width:80px;height:80px;display:none;background-color:red;"></div><br>
+    <div id="div2" style="width:80px;height:80px;display:none;background-color:green;"></div><br>
+    <div id="div3" style="width:80px;height:80px;display:none;background-color:blue;"></div>
+
+</body>
+</html>
+
+
+
+hide&show
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $("p").hide();
+  });
+  $("#show").click(function(){
+    $("p").show();
+  });
+});
+    </script>
+</head>
+<body>
+
+    <p>If you click on the "Hide" button, I will disappear.</p>
+
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+
+</body>
+</html>
+
+
+javamethods
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>The JavaScript <i>this</i> Keyword</h2>
+    <p>
+        In this example, <b>this</b> represents the <b>
+            person</<!DOCTYPE html>
+           
+
+
+                <h2>The JavaScript <i>this</i> Keyword</h2>
+<p>In this example, <b>this</b> represents the <b>person</b> object.</p>
+<p>Because the person object "owns" the fullName method.</p>
+
+<p id="demo"></p>
+
+
+<script>
+
+    // Create an object:
+    var person = {
+        firstName: "John",
+        lastName: "Doe",
+        id: 5566, b> object.</p>
+            <p>Because the person object "owns" the fullName method.</p>
+
+            <p id="demo"></p>
+
+            <script>
+                // Create an object:
+                var person = {
+                    firstName: "Kaumudi",
+            lastName : "K M",
+            id     : 15,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+                          }
+                        };
+
+                        // Display data from the object:
+                        document.getElementById("demo").innerHTML = person.fullName();
+</script>
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>The JavaScript <i>this</i> Keyword</h2>
+    <p>
+        In this example, <b>this</b> represents the <b>
+            person</<!DOCTYPE html>
+            <html>
+            <body>
+                <h2>The JavaScript <i>this</i> Keyword</h2>
+<p>In this example, <b>this</b> represents the <b>person</b> object.</p>
+<p>Because the person object "owns" the fullName method.</p>
+<p id="demo"></p>
+<script>
+
+    // Create an object:
+var person = {
+            firstName: "John",
+        lastName : "Doe",
+id     : 5566,b> object.</p>
+    <p>Because the person object "owns" the fullName method.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        // Create an object:
+        var person = {
+            firstName: "John",
+        lastName : "Doe",
+        id     : 5566,
+fullName : function() {
+return this.firstName + " " + this.lastName;
+      }
+    };
+
+    // Display data from the object:
+    document.getElementById("demo").innerHTML = person.fullName();
+</script>
+
+
+
+
