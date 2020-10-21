@@ -1,0 +1,690 @@
+Topic-1:sliding- 1.slideDown
+         2.slideUp
+         3.Toogle
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>sliding</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#flip").click(function () {
+                $("#panel").slideDown();
+
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#flip1").click(function () {
+                $("#panel1").slideDown();
+
+            });
+
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#flip2").click(function () {
+                $("#panel2").slideUp();
+
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#flip3").click(function () {
+                $("#panel3").slideToggle("slow");
+            });
+        });
+
+    </script>
+
+    <style>
+        #panel, #flip {
+            background-color: grey;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #panel {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+
+    <style>
+        #panel1, #flip1 {
+            background-color: green;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #panel1 {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+
+    <style>
+        #panel2, #flip2 {
+            background-color: cyan;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #panel1 {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+
+
+    <style>
+        #panel3, #flip3 {
+            background-color:cornflowerblue;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #panel1 {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="flip">click to slide down</div>
+    <div id="panel">Hello world!</div>
+
+    <div id="flip1">another example!</div>
+    <div id="panel1">programming is really fun!</div>
+
+    <div id="flip2">new example here for slideup!</div>
+    <div id="panel2">programming is really fun...isn't it?!</div>
+
+    <div id="flip3">toggle here!</div>
+    <div id="panel3">its done!</div>
+
+</body>
+</html >
+
+
+
+
+
+
+
+
+
+topic-2.Animate
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+  $("button").click(function(){
+    $("div").animate({
+      left: '250px',
+      opacity: '0.5',
+      height: '150px',
+      width: '150px'
+
+<!--                 
+                    height: 'toggle'
+                    opacity: '0.5',
+                    left: '250px',
+                    height: '+=10px',
+                    width: '+=10px' 
+                   div.animate({height: '300px', opacity: '0.4'}, "slow");
+                   div.animate({width: '300px', opacity: '0.8'}, "slow");
+                   div.animate({height: '100px', opacity: '0.4'}, "slow");
+                   div.animate({width: '100px', opacity: '0.8'}, "slow");
+                                                                                  -->
+
+
+    });
+  });
+});
+</script> 
+</head>
+<body>
+
+<button>Start Animation</button>
+
+<p>By default, all HTML elements have a static position, and cannot be moved. To manipulate the position, remember to first set the CSS position property of the element to relative, fixed, or absolute!</p>
+
+<div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>
+
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>sliding</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#flip").click(function () {
+                $("#panel").slideDown();
+
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#flip1").click(function () {
+                $("#panel1").slideDown(5000);
+
+            });
+
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#flip2").click(function () {
+                $("#panel2").slideUp();
+
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#flip3").click(function () {
+                $("#panel3").slideToggle("slow");
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("div").animate();
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("p").animate({ left: '400px' });
+            });
+        });
+
+    </script>
+
+    <style>
+        #panel, #flip {
+            background-color: grey;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #panel {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+
+    <style>
+        #panel1, #flip1 {
+            background-color: green;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #panel1 {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+
+    <style>
+        #panel2, #flip2 {
+            background-color: cyan;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #panel1 {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+
+
+    <style>
+        #panel3, #flip3 {
+            background-color: cornflowerblue;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #panel1 {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="flip">click to slide down</div>
+    <div id="panel">Hello world!</div>
+
+    <div id="flip1">another example!</div>
+    <div id="panel1">programming is really fun!</div>
+
+    <div id="flip2">new example here for slideup!</div>
+    <div id="panel2">programming is really fun...isn't it?!</div>
+
+    <div id="flip3">toggle here!</div>
+    <div id="panel3">its done!</div>
+
+    <button>start animation</button><br>
+
+    <button>start animation1</button><br>
+
+    <div style=" background-color:darkseagreen;width:160px;height:100px"></div>
+
+    <p style=" background-color:darkblue;width:160px;height:100px;position:absolute;"></p> 
+           <!--position:fixed,relative,etc...-->
+
+
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+  $("button").click(function(){
+    var div = $("div");  
+    div.animate({left: '100px'}, "slow");
+    div.animate({fontSize: '3em'}, "slow");
+  });
+});
+</script> 
+</head>
+<body>
+
+<button>Start Animation</button>
+
+<p>By default, all HTML elements have a static position, and cannot be moved. To manipulate the position, remember to first set the CSS position property of the element to relative, fixed, or absolute!</p>
+
+<div style="background:#98bf21;height:100px;width:200px;position:absolute;">HELLO</div>
+
+</body>
+</html>
+
+
+<!-- jQuery get_____ex1.-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    alert("Text: " + $("#test").text());
+  });
+  $("#btn2").click(function(){
+    alert("HTML: " + $("#test").html());
+  });
+});
+</script>
+</head>
+<body>
+
+<p id="test">There is some <b>bold</b> text in a paragraph.</p>
+
+<button id="btn1">Show Text</button>
+<button id="btn2">Show HTML</button>
+
+</body>
+</html>
+
+
+<!-- jQuery get_____ex2.-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    alert("Value: " + $("#test").val());
+  });
+});
+</script>
+</head>
+<body>
+
+<p>Name: <input type="text" id="test" value="Mickey Mouse"></p>
+
+<button>Show Value</button>
+
+</body>
+</html>
+
+
+<!-- jQuery set_______ex1-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#test1").text("Hello world!");
+  });
+  $("#btn2").click(function(){
+    $("#test2").html("<b>Have a good day!!!!</b>");
+  });
+  $("#btn3").click(function(){
+    $("#test3").val("Rekha");
+  });
+});
+</script>
+</head>
+<body>
+
+<p id="test1">This is a paragraph.</p>
+<p id="test2">This is another paragraph.</p>
+
+<p>Input field: <input type="text" id="test3" value="Kaumudi"></p>
+
+<button id="btn1">Set Text</button>
+<button id="btn2">Set HTML</button>
+<button id="btn3">Set Value</button>
+
+</body>
+</html>
+
+
+<!-- jQuery set_______ex2-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#test1").text(function(i, origText){
+      return "Old text: " + origText + " New text: Hello world! (index: " + i + ")"; 
+    });
+  });
+
+  $("#btn2").click(function(){
+    $("#test2").html(function(i, origText){
+      return "Old html: " + origText + " New html: Hello <b>world!</b> (index: " + i + ")"; 
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<p id="test1">This is a <b>bold</b> paragraph.</p>
+<p id="test2">This is another <b>bold</b> paragraph.</p>
+
+<button id="btn1">Show Old/New Text</button>
+<button id="btn2">Show Old/New HTML</button>
+
+</body>
+</html>
+
+<!-- jQuery add_______ex1(appended in paragrapgh and list)-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("p").append(" <b>KvsmsvK</b>.");
+  });
+
+  $("#btn2").click(function(){
+    $("ol").append("<li>Nikhil</li>");
+  });
+});
+</script>
+</head>
+<body>
+
+<p>Rainbow is a gang of 7 girls.</p>
+
+
+<ol>
+  <li>Pranith</li>
+  <li>Kiran</li>
+  <li>Sachin</li>
+</ol>
+
+<button id="btn1">Append text</button>
+<button id="btn2">Append list items</button>
+
+</body>
+</html>
+
+
+
+
+<!-- jQuery add_______ex2(prepend in paragrapgh and list)-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("p").prepend("<b>Ramya</b>. ");
+  });
+  $("#btn2").click(function(){
+    $("ol").prepend("<li>yashu</li>");
+  });
+});
+</script>
+</head>
+<body>
+
+<p>hostel wala friend.</p>
+<p>This is another paragraph.</p>
+
+<ol>
+  <li>keerthana</li>
+  <li>aisiri</li>
+  <li>almas</li>
+</ol>
+
+<button id="btn1">Prepend text</button>
+<button id="btn2">Prepend list item</button>
+
+</body>
+</html>
+
+
+
+<!-- jQuery add_______ex3(before and after image)-->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("img").before("<b>Before</b>");
+  });
+
+  $("#btn2").click(function(){
+    $("img").after("<i>After</i>");
+  });
+});
+</script>
+</head>
+<body>
+
+<img src="442b63331b636cde1b2475c50038cc5d--lord-ganesha-sri-ganesh" alt="jQuery" width="100" height="140"><br><br>
+
+<button id="btn1">Insert before</button>
+<button id="btn2">Insert after</button>
+
+</body>
+</html>
+
+
+<!-- jQuery remove_______ex1-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#div1").remove();
+  });
+});
+</script>
+</head>
+<body>
+
+<div id="div1" style="height:60px;width:400px;border:4px solid black;background-color:green;">
+
+Tumkur is heaven on earth.
+<p>Devarayana durga is like oxygen cylinder.</p>
+
+
+</div>
+<br>
+
+<button>Remove div element</button>
+
+</body>
+</html>
+
+
+
+
+<!-- jQuery remove_______ex2(empty)-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#div1").empty();
+  });
+});
+</script>
+</head>
+<body>
+
+<div id="div1" style="height:80px;width:90px;border:1px solid black;background-color:aqua;">
+
+fishes
+<p>I will empty it now.</p>
+
+
+</div>
+<br>
+
+<button>Empty the aquarium</button>
+
+</body>
+</html>
+
+
+
+
+<!-- jQuery remove_______ex3(remove elements)-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").remove(".remove3");
+  });
+});
+</script>
+<style>
+.test {
+  color: red;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<p>This is a paragraph.</p>
+<p class="remove3">This is another paragraph.</p>
+<p class="remove3">one another.</p>
+
+<button>Remove all p elements with class="remove3"</button>
+
+</body>
+</html>
+
+
