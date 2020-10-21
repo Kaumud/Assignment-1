@@ -1,0 +1,333 @@
+<!-- jQuery get_____ex1.-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    alert("Text: " + $("#test").text());
+  });
+  $("#btn2").click(function(){
+    alert("HTML: " + $("#test").html());
+  });
+});
+</script>
+</head>
+<body>
+
+<p id="test">There is some <b>bold</b> text in a paragraph.</p>
+
+<button id="btn1">Show Text</button>
+<button id="btn2">Show HTML</button>
+
+</body>
+</html>
+
+
+<!-- jQuery get_____ex2.-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    alert("Value: " + $("#test").val());
+  });
+});
+</script>
+</head>
+<body>
+
+<p>Name: <input type="text" id="test" value="Mickey Mouse"></p>
+
+<button>Show Value</button>
+
+</body>
+</html>
+
+
+<!-- jQuery set_______ex1-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#test1").text("Hello world!");
+  });
+  $("#btn2").click(function(){
+    $("#test2").html("<b>Have a good day!!!!</b>");
+  });
+  $("#btn3").click(function(){
+    $("#test3").val("Rekha");
+  });
+});
+</script>
+</head>
+<body>
+
+<p id="test1">This is a paragraph.</p>
+<p id="test2">This is another paragraph.</p>
+
+<p>Input field: <input type="text" id="test3" value="Kaumudi"></p>
+
+<button id="btn1">Set Text</button>
+<button id="btn2">Set HTML</button>
+<button id="btn3">Set Value</button>
+
+</body>
+</html>
+
+
+<!-- jQuery set_______ex2-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#test1").text(function(i, origText){
+      return "Old text: " + origText + " New text: Hello world! (index: " + i + ")"; 
+    });
+  });
+
+  $("#btn2").click(function(){
+    $("#test2").html(function(i, origText){
+      return "Old html: " + origText + " New html: Hello <b>world!</b> (index: " + i + ")"; 
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<p id="test1">This is a <b>bold</b> paragraph.</p>
+<p id="test2">This is another <b>bold</b> paragraph.</p>
+
+<button id="btn1">Show Old/New Text</button>
+<button id="btn2">Show Old/New HTML</button>
+
+</body>
+</html>
+
+<!-- jQuery add_______ex1(appended in paragrapgh and list)-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("p").append(" <b>KvsmsvK</b>.");
+  });
+
+  $("#btn2").click(function(){
+    $("ol").append("<li>Nikhil</li>");
+  });
+});
+</script>
+</head>
+<body>
+
+<p>Rainbow is a gang of 7 girls.</p>
+
+
+<ol>
+  <li>Pranith</li>
+  <li>Kiran</li>
+  <li>Sachin</li>
+</ol>
+
+<button id="btn1">Append text</button>
+<button id="btn2">Append list items</button>
+
+</body>
+</html>
+
+
+
+
+<!-- jQuery add_______ex2(prepend in paragrapgh and list)-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("p").prepend("<b>Ramya</b>. ");
+  });
+  $("#btn2").click(function(){
+    $("ol").prepend("<li>yashu</li>");
+  });
+});
+</script>
+</head>
+<body>
+
+<p>hostel wala friend.</p>
+<p>This is another paragraph.</p>
+
+<ol>
+  <li>keerthana</li>
+  <li>aisiri</li>
+  <li>almas</li>
+</ol>
+
+<button id="btn1">Prepend text</button>
+<button id="btn2">Prepend list item</button>
+
+</body>
+</html>
+
+
+
+<!-- jQuery add_______ex3(before and after image)-->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("img").before("<b>Before</b>");
+  });
+
+  $("#btn2").click(function(){
+    $("img").after("<i>After</i>");
+  });
+});
+</script>
+</head>
+<body>
+
+<img src="442b63331b636cde1b2475c50038cc5d--lord-ganesha-sri-ganesh" alt="jQuery" width="100" height="140"><br><br>
+
+<button id="btn1">Insert before</button>
+<button id="btn2">Insert after</button>
+
+</body>
+</html>
+
+
+<!-- jQuery remove_______ex1-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#div1").remove();
+  });
+});
+</script>
+</head>
+<body>
+
+<div id="div1" style="height:60px;width:400px;border:4px solid black;background-color:green;">
+
+Tumkur is heaven on earth.
+<p>Devarayana durga is like oxygen cylinder.</p>
+
+
+</div>
+<br>
+
+<button>Remove div element</button>
+
+</body>
+</html>
+
+
+
+
+<!-- jQuery remove_______ex2(empty)-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#div1").empty();
+  });
+});
+</script>
+</head>
+<body>
+
+<div id="div1" style="height:80px;width:90px;border:1px solid black;background-color:aqua;">
+
+fishes
+<p>I will empty it now.</p>
+
+
+</div>
+<br>
+
+<button>Empty the aquarium</button>
+
+</body>
+</html>
+
+
+
+
+<!-- jQuery remove_______ex3(remove elements)-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").remove(".remove3");
+  });
+});
+</script>
+<style>
+.test {
+  color: red;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<p>This is a paragraph.</p>
+<p class="remove3">This is another paragraph.</p>
+<p class="remove3">one another.</p>
+
+<button>Remove all p elements with class="remove3"</button>
+
+</body>
+</html>
+
