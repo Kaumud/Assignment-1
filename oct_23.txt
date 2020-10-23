@@ -1,0 +1,202 @@
+1. website(code-behind)
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="my_first_website.aspx.cs" Inherits="my_first_website" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+             <button>click me!</button>  <br/><br/>
+            <asp:Button ID="button1" runat="server" Text="Click me" ForeColor ="green" OnClick="button1_Click"/>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class my_first_website : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        
+    }
+
+    protected void button1_Click(object sender, EventArgs e)
+    {
+        Response.Write(" code behind working fine");
+    }
+}
+
+
+
+
+2.website(in-line) 
+
+<%@ Page Language="C#" %>
+
+<!DOCTYPE html>
+
+<script runat="server">
+
+    protected void button2_Click(object sender, EventArgs e)
+    {
+        Response.Write("In-line working fine");
+    }
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Button ID="button2" runat="server" Text="Click me" ForeColor ="yellow" OnClick="button2_Click"/>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+
+3.web application(code-behind)
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication2.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Button ID="button1" runat="server" Text="Click me" ForeColor ="green" OnClick="button1_Click" />
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication2
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void button1_Click(object sender, EventArgs e)
+        {
+            Response.Write(" code behind working fine in web application");
+        }
+    }
+}
+
+
+
+4.radio_button
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="WebApplication2.WebForm2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            
+            <input type="text" name="textbox"/>
+            <button>Submit</button>
+
+            <br/>
+            <asp:textbox ID="Textbox1" runat="server" />
+            <asp:Button ID="button1" runat="server" Text="SUBMIT" OnClick="button1_Click" />
+            </div> 
+
+
+            <div>
+            <asp:RadioButton ID="RadioButton_red" runat="server" ForeColor="Red" Font-Bold="True" GroupName="This is red color" OnCheckedChanged="RadioButton_red_CheckedChanged" Text="Red" OnClick="button1_Click" />
+            <asp:RadioButton ID="RadioButton_blue" runat="server" ForeColor="Blue" Font-Bold="True" Font-Italic="True" Text="Blue" OnClick="button1_Click" OnCheckedChanged="RadioButton_blue_CheckedChanged" />
+            <asp:RadioButton ID="RadioButton_green" runat="server" ForeColor="Green" BackColor="White" Font-Bold="True" Text="Green" OnClick="button1_Click" OnCheckedChanged="RadioButton_green_CheckedChanged" />
+
+
+        </div>  
+    </form>
+</body>
+</html>
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication2
+{
+    public partial class WebForm2 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void button1_Click(object sender, EventArgs e)
+        {
+            string abc = "Hello" + Textbox1.Text + "This is asp.net framework web form" ;
+            Response.Write(abc);
+        }
+
+        protected void RadioButton_red_CheckedChanged(object sender, EventArgs e)
+        {
+            string red = "this is printing in red";
+            Response.Write(red);
+        }
+
+        protected void RadioButton_blue_CheckedChanged(object sender, EventArgs e)
+        {
+            string blue = "this is printing in blue";
+            Response.Write(blue);
+
+
+        }
+
+        protected void RadioButton_green_CheckedChanged(object sender, EventArgs e)
+        {
+            string green = "this is printing in green";
+            Response.Write(green);
+        }
+    }
+}
