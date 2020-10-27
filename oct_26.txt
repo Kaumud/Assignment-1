@@ -1,0 +1,152 @@
+command aspx 
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="command.aspx.cs" Inherits="oct_26_2020.command" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:LinkButton ID="link1" runat="server" OnCommand="link1_Command" Text="Select 1st" CommandName="Selection" CommandArgument="1"></asp:LinkButton>
+            <asp:LinkButton ID="Link2" runat="server" OnCommand="link2_Command" Text="Select 2nd" CommandName="Selection" CommandArgument="2"></asp:LinkButton>
+       </div>
+        <asp:Label ID="label1" runat="server"></asp:Label>
+    </form>
+</body>
+</html>
+
+
+command cs 
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace oct_26_2020
+{
+    public partial class command : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void link1_Command(object sender,CommandEventArgs e)
+        {
+            label1.Text = "you chose" + e.CommandName + "item" + e.CommandArgument;
+        }
+        protected void link2_Command(object sender, CommandEventArgs e)
+        {
+            label1.Text = "you chose" + e.CommandName + "item" + e.CommandArgument;
+        }
+
+
+    }
+}
+
+
+
+dispose aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="dispose.aspx.cs" Inherits="oct_26_2020.dispose" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:LinkButton ID="link1" runat="server" OnDisposed="link1_Disposed">Click here</asp:LinkButton><br />
+            <asp:Label ID="label1" runat="server"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+
+dispose cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace oct_26_2020
+{
+    public partial class dispose : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void link1_disposed(object sender,EventArgs e)
+        {
+            label1.Text = "programming is fun";
+        }
+    }
+}
+
+
+
+post cs 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace oct_26_2020
+{
+    public partial class linkbutton : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Label1.Text = "Welcome to asp.net programming";
+        }
+    }
+}
+
+
+postback url and visible aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="linkbutton.aspx.cs" Inherits="oct_26_2020.linkbutton" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <p>It is a hyperlink style button</p>  
+        <div>
+            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" BackColor="DarkBlue" ForeColor="White">Click here</asp:LinkButton>  
+            <asp:LinkButton ID="myLinkButton" runat="server" PostBackUrl="~/checkbox.aspx" > Click here! </asp:LinkButton>
+            <asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="https://www.google.com" > Click here! </asp:LinkButton>
+            <asp:LinkButton ID="myLinkButton1" Visible="True" runat="server"></asp:LinkButton>
+        <p>  
+            <asp:Label ID="Label1" runat="server"></asp:Label>  
+       </p> 
+        </div>
+    </form>
+</body>
+</html>
