@@ -66,7 +66,7 @@ train_no int,
 trainname varchar(10),
 sourceof  varchar(100),
 destination varchar(15),
-time_arrival varchar
+time_arrival time
 );
 
 insert into indian_Railway_system values(22206,'duronto express','coal','tumkur','22:40')
@@ -85,10 +85,10 @@ department  varchar(10),
 location1 varchar
 );
 
-insert into indian_Railway_system values(23,'Vinay','issue','chennai')
-insert into indian_Railway_system values(24,'bharath','currency management','chennai')
-insert into indian_Railway_system values(28,'tejpal','exchange control','chennai')
-insert into indian_Railway_system values(29,'kiran','industrial credit','chennai')
+insert into bank values(23,'Vinay','issue','chennai')
+insert into bank values(24,'bharath','currency management','chennai')
+insert into bank values(28,'tejpal','exchange control','chennai')
+insert into bank values(29,'kiran','industrial credit','chennai')
 
 
 select*from bank
