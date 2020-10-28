@@ -1,0 +1,142 @@
+datagrid_connected to database assignment
+
+
+
+database
+--------------------------------------SQL-----------------------------------
+use TrainingDXC
+
+
+create table student(
+
+Id int,
+Firstname varchar(10),
+Lastname  varchar(10),
+Location1 varchar(15)
+);
+
+insert into student values(15,'Kaumudi','K M','Tumkur')
+insert into student values(16,'Rekha','M B','Tumkur')
+insert into student values(17,'Kiran','M','Tumkur')
+insert into student values(18,'Supriya','D S','Tumkur')
+insert into student values(19,'Pranith','jain','Tumkur')
+insert into student values(20,'Sachin','shanbhog','Tumkur')
+
+
+select*from student
+
+
+
+create table employeed(
+
+Id int,
+Employee varchar(10),
+Designation  varchar(10),
+Location1 varchar(15)
+);
+
+insert into employeed values(116,'Kaumudi','trainee','Tumkur')
+insert into employeed values(117,'Ramya','trainee','chithradurga')
+insert into employeed values(118,'Soumya','trainee','gangavathi')
+insert into employeed values(119,'Sravani','trainee','hyderabad')
+insert into employeed values(120,'Aishwarya','trainee','solapur')
+
+select*from employeed
+
+
+create table indian_cricket_team(
+
+jersey_no int,
+Firstname varchar(10),
+Lastname  varchar(10),
+No_centuries int
+);
+
+
+insert into indian_cricket_team values(18,'Virat','Kohli',70)
+insert into indian_cricket_team values(12,'yuvraj','singh',17)
+insert into indian_cricket_team values(7,'M S','Dhoni',16)
+insert into indian_cricket_team values(10,'sachin','tendulkar',100)
+
+select*from indian_cricket_team
+
+create table indian_Railway_system(
+
+train_no int,
+trainname varchar(10),
+sourceof  varchar(100),
+destination varchar(15),
+time_arrival varchar
+);
+
+insert into indian_Railway_system values(22206,'duronto express','coal','tumkur','22:40')
+insert into indian_Railway_system values(12426,'rajdhani express','diesel','banglore','21:40')
+insert into indian_Railway_system values(22206,'janshathabdi express','coal','davangere','20:40')
+insert into indian_Railway_system values(22206,'chennai express','diesel','chennai','19:40')
+
+select*from indian_Railway_system
+
+
+create table bank(
+
+empid int,
+Fullname varchar(30),
+department  varchar(10),
+location1 varchar
+);
+
+insert into indian_Railway_system values(23,'Vinay','issue','chennai')
+insert into indian_Railway_system values(24,'bharath','currency management','chennai')
+insert into indian_Railway_system values(28,'tejpal','exchange control','chennai')
+insert into indian_Railway_system values(29,'kiran','industrial credit','chennai')
+
+
+select*from bank
+
+------------------------------------------------------------------------------------------------
+
+
+vs code
+
+<%@ Page Language="C#" AutoEventWireup="true"   
+CodeBehind="DataGrid.aspx.cs" Inherits="AdoNetExample.DataGridExample" %>  
+<!DOCTYPE html>  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head runat="server">  
+    <title></title>  
+</head>  
+<body>  
+    <form id="form1" runat="server">  
+        <div>  
+        </div>  
+        <asp:DataGrid ID="DataGrid1" runat="server">  
+        </asp:DataGrid>  
+    </form>  
+</body>  
+</html>  
+
+
+-----------------------------------------------------------------------------------------------------
+
+code behind
+
+using System;
+using System.Data;
+using System.Data.SqlClient;
+namespace AdoNetExample
+{
+    public partial class DataGridExample : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            using (SqlConnection con = new SqlConnection("server=DESKTOP-3UIK9G7\\SQLEXPRESS; database=TrainingDXC; integrated security=SSPI"))
+            {
+                SqlDataAdapter sde = new SqlDataAdapter("Select * from student", con);
+                DataSet dataSet = new DataSet();
+                sde.Fill(dataSet);
+                DataGrid1.DataSource = dataSet;
+                DataGrid1.DataBind();
+            }
+        }
+    }
+}
