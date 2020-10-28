@@ -63,7 +63,7 @@ select*from indian_cricket_team
 create table indian_Railway_system(
 
 train_no int,
-trainname varchar(10),
+trainname varchar(100),
 sourceof  varchar(100),
 destination varchar(15),
 time_arrival time
@@ -81,7 +81,7 @@ create table bank(
 
 empid int,
 Fullname varchar(30),
-department  varchar(10),
+department  varchar(100),
 location1 varchar
 );
 
