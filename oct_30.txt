@@ -1,0 +1,184 @@
+1.student admission
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="student_admission.aspx.cs" Inherits="oct_30.student_admission" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+            height: 492px;
+        }
+        .auto-style3 {
+            height: 32px;
+        }
+        .auto-style4 {
+            height: 32px;
+            width: 169px;
+        }
+        .auto-style5 {
+            width: 169px;
+            height: 81px;
+        }
+        .auto-style6 {
+            height: 4px;
+            width: 169px;
+        }
+        .auto-style7 {
+            height: 4px;
+        }
+        .auto-style8 {
+            height: 81px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:Panel ID="Panel1" runat="server">
+        </asp:Panel>
+        <table class="auto-style1">
+            <tr>
+                <td class="auto-style4">Firstname</td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="TextBox1" runat="server" Width="434px"></asp:TextBox>
+                </td>
+                <td class="auto-style3"></td>
+            </tr>
+            <tr>
+                <td class="auto-style4">Lastname</td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="TextBox2" runat="server" Width="434px"></asp:TextBox>
+                </td>
+                <td class="auto-style3">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">Father&#39;s Name</td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="TextBox3" runat="server" Width="434px"></asp:TextBox>
+                </td>
+                <td class="auto-style3">&nbsp;</td>
+            </tr>
+            <tr>
+                <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                <td class="auto-style4">Mother&#39;s Name</td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="TextBox4" runat="server" Width="434px"></asp:TextBox>
+                </td>
+                <td class="auto-style3">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">Gender</td>
+                <td class="auto-style3">
+
+
+                     <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="textbox5" ErrorMessage="Aggregate should be greater than 60%" MaximumValue="100" MinimumValue="60" Type="Integer"></asp:RangeValidator>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="auto-style1">Course</td>
+                <td class="auto-style2">
+                    <asp:RadioButton ID="RadioButton3" runat="server" Text="ECE"   /><br />
+                    <asp:CheckBox ID="checkbox1" runat="server" Text="Digital Communication" ></asp:CheckBox>
+                    <asp:CheckBox ID="checkbox2" runat="server" Text="Analog"></asp:CheckBox>
+                    <asp:CheckBox ID="checkbox3" runat="server" Text="Microcontroller"></asp:CheckBox><br />
+                    <asp:RadioButton ID="RadioButton4" runat="server" Text="CSE" /><br />
+                    <asp:CheckBox ID="checkbox4" runat="server" Text="ComputerOrganization"></asp:CheckBox>
+                    <asp:CheckBox ID="checkbox5" runat="server" Text="Operating System"></asp:CheckBox>
+                    <asp:CheckBox ID="checkbox6" runat="server"  Text="Graphics"></asp:CheckBox>
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;</td>
+            </tr>
+        </table>
+
+                    <asp:Button ID="Button1" runat="server" Text="Register" />
+                </td>
+                <td class="auto-style7">&nbsp;</td>
+                <td class="auto-style7">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style5"></td>
+                <td class="auto-style8">
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+                </td>
+                <td class="auto-style8"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+2.election
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Electionassign.aspx.cs" Inherits="assignment.election" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 160px;
+        }
+    </style>
+</head>
+<body style="background-color:grey">
+    <form id="form1" runat="server">
+        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Election Candidate Registration Form</h3>
+        <div>
+        </div>
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style1">Candidate Name</td>
+                
+                <td><asp:TextBox ID="textbox1" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="textbox1" ErrorMessage="Candidate Name Required"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">House</td>
+                <td>
+                    <asp:RadioButton ID="RadioButton1" runat="server" ForeColor="orange" Text="orange" />
+                    <asp:RadioButton ID="RadioButton2" runat="server" ForeColor="blue" Text="Blue" />
+                    <asp:RadioButton ID="RadioButton3" runat="server" ForeColor="grey" Text="grey" />
+                    <asp:RadioButton ID="RadioButton4" runat="server" ForeColor="green" Text="green" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2">Class</td>
+                <td><asp:TextBox ID="textbox2" runat="server"></asp:TextBox>
+                    <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="class 6 to class 12 only" MaximumValue="12" MinimumValue="6" Type="Integer" ControlToValidate="textbox2"></asp:RangeValidator>
+                </td>
+               
+            </tr>
+            <tr>
+                <td class="auto-style2">Email</td>
+                <td><asp:TextBox ID="textbox3" runat="server"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="textbox3" ErrorMessage="Enter Valid email"  ValidationExpression="^([a-zA-Z0-9]+@gmail\\.com)$"></asp:RegularExpressionValidator>
+                </td>
+                
+            </tr>
+        </table>
+        <asp:Button ID="Button1" runat="server" Text="Register" OnClick="Button1_Click" />
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+    </form>
+</body>
+</html>
