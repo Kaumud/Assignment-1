@@ -1,0 +1,43 @@
+calender practice
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="calender.aspx.cs"  
+Inherits="WebFormsControlls.WebControls" %>  
+<!DOCTYPE html>  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head runat="server">  
+    <title></title>  
+</head>  
+<body>  
+    <form id="form1" runat="server">  
+        <h2>Select Date from the Calender</h2>  
+        <div>  
+            <asp:Calendar ID="Calendar1" runat="server"   
+            OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>  
+        </div>  
+    </form>  
+    <p>  
+        <asp:Label runat="server" ID="ShowDate" ></asp:Label>  
+    </p>  
+</body>  
+</html>  
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebFormsControlls
+{
+    public partial class WebControls : System.Web.UI.Page
+    {
+        public void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            ShowDate.Text = "You Selected: " + Calendar1.SelectedDate.ToString("D");
+        }
+    }
+}
