@@ -88,21 +88,7 @@ namespace surprise
 
         }
 
-        protected void Button8_Click(object sender, EventArgs e)//list of users
-        {
-
-        }
-
-        protected void Button9_Click(object sender, EventArgs e)//add flight
-        {
-
-        }
-
-        protected void Button10_Click(object sender, EventArgs e)//queries
-        {
-
-        }
-
+        
         protected void Button11_Click(object sender, EventArgs e)//login
         {
             Response.Redirect("Login.aspx");
