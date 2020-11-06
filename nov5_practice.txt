@@ -1,0 +1,205 @@
+typescript_practice
+
+
+
+let one = 1;
+let two = 2;
+let three = 3;
+let four = 4;
+
+
+let number = 0o377//octal number
+
+
+let identifier: number = 1000;
+let first: number = 12.0;
+let second: string = "kaumudi";
+
+let employeename: string = "Kaumudi K M"
+let designation: string = "trainee";
+let pincode: number = 585414;
+
+console.log(first); console.log(second); console.log(employeename);
+console.log(designation); console.log(pincode);
+
+let isDone: boolean = true;
+let examdone: boolean = false;
+
+console.log(isDone);
+console.log(examdone);
+
+function SayHello(): void{
+
+    console.log("this is an example of void datatype");
+}
+
+let value: any = "1234kaumu";
+
+
+console.log('Hello world');
+
+
+///userdefined datatypes
+
+//touple
+
+var a: ["kaumudi", "rekha", 15, 7337621510, "dxc", "hyderabad"];
+var b: [1, 2, 3];
+console.log(a);
+console.log(b);
+
+
+//function
+
+//named function
+
+function display() {
+    console.log("Hello TypeScript!");
+}
+
+display();
+
+//ex 2-with parameter
+
+function Sum(x: number, y: number): number {
+    return x + y;
+}
+
+Sum(2, 3);
+
+//ex 3-anonymous function
+
+let greeting = function () {
+    console.log("Hello TypeScript!");
+};
+
+greeting(); 
+
+//loops
+
+for (let i = 0; i < 3; i++) {
+    console.log("loop statement." + i);
+}
+
+//for...of loop
+
+let arr = [10, 20, 30, 40];
+
+for (var val of arr) {
+    console.log(val); // prints values: 10, 20, 30, 40
+}
+
+//string - for...of loop
+
+let str = "Hello World";
+
+for (var char of str) {
+    console.log(char); // prints chars: H e l l o  W o r l d
+}
+
+
+
+
+//acces modifier
+
+//public
+
+class Employee {
+    public empCode: string;
+    empName: string;
+}
+
+let emp = new Employee();
+emp.empCode = 15;//public
+emp.empName = "kaumudi";//by default public
+
+//private
+
+class Employee1
+{
+    private empCode: number;
+    empName: string;
+}
+
+let emp1 = new Employee();
+emp.empName = "kaumudi";//OK
+
+//protected
+
+class Employee2 {
+    public empName: string;
+    protected empCode: number;
+
+    constructor(name: string, code: number)
+    {
+        this.empName = name;
+        this.empCode = code;
+    }
+}
+
+class SalesEmployee2 extends Employee {
+    private department: string;
+
+    constructor(name1: string, code1: number, department: string)
+    {
+        super();
+        this.department = department;
+    }
+}
+
+
+
+
+//map set
+
+let map = new Map();
+
+map.set('1', 'str1');   // a string key
+map.set(1, 'num1');     // a numeric key
+map.set(true, 'bool1'); // a boolean key
+
+
+console.log(map.get(1)); // 'number1'
+console.log(map.get('1')); // 'string1'
+
+console.log(map.size); 
+
+
+
+register
+
+function getArray<T>(items: T[]): T[] {
+    return new Array<T>().concat(items);
+}
+let num = getArray<number>([100, 200, 300]);
+let str = getArray<string>(["hii", "good", "morning"]);
+
+num.push(500);
+str.push("kaumudi");
+
+
+function displaytype<T>(id: T, name: string): void {
+    console.log("datatype of id" + typeof (id) + "datatype of name" + typeof (name));
+
+}
+
+displaytype<number>(1, "kaumudi");
+displaytype<string>("km210", "km");
+
+class student<T, U>
+{
+    private id: T;
+    private name: U;
+    set(id: T, name: U): void {
+        this.id = id;
+        this.name = name;
+    }
+    display(): void {
+        console.log("id=${this.id},Name=${this.name}");
+    }
+}
+
+let s = new student<number, string>();
+s.set(1, "teju");
+s.display();
+
