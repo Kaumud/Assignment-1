@@ -1,0 +1,102 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <label>addition of 10 and 20 is : @(10 + 20))</label>
+        <label> Todays's Date and Time is: @DateTime.Now</label> <br />
+        <label> Addition of 2 and 3 is: @(2 + 3)</label><br />
+        <label> Subtraction of 5 and 3 is: @(5 - 3)</label><br />
+        <label> Multiplication of 3 and 3  is: @(3 * 3)</label><br />
+        <label> Division of 100 and 4 is: @(100 / 4)</label><br />
+        <label> Modulus of 40 and 20 is:@(10 % 20)</label><br />
+    </div>
+
+
+    <div>
+        @{
+            var x = 15;
+            var y = 12;
+            var z = x + y;
+            var Name = "Kaumudi";
+            var job = "Trainee";
+            var ColorsList = new List<string>() { "Black", "Brown", "Green", "Pink" };
+            var NumList = new List<int>() { 2, 6, 8, 24, 22, 1, 4 };
+        }
+    </div>
+
+
+
+    <div>
+
+        <label> addition of 107 and 177 is : @(z)</label><br />
+        <label> My name is: @Name</label><br />
+        <label> My job is:@job</label><br />
+
+        @{
+            foreach (var a in ColorsList)
+            {
+                <label> @(a)</label><br />
+            }
+        }
+        @{
+            foreach (var b in NumList)
+            {
+                <label> @(b)</label><br />
+            }
+        }
+
+    </div>
+
+
+    <div>
+        @{ 
+            var variable = 1;
+        }
+
+    </div>
+
+    <div>
+        @if (variable == 1)
+        {
+            <h2>kaumudi....it is if block</h2>
+
+        }
+        else if (variable == 0)
+        {
+            <h2>else if block.....odd</h2>
+        }
+        else
+        {
+            <h2>else block</h2>
+
+        }
+
+    </div>
+
+    <div>
+        @for(int i = 3; i<=3; i++)
+        {
+            <h1>this is for loop  @i  index</h1>
+        }
+
+    </div>
+
+        <div>
+            <h1> Escape sequence in Razor view engine </h1>
+            <div> kaumudi1512@gmail.com </div>
+            <label> Email address is: @@kaumudikm@gmail.com</label>
+        </div>
+
+
+</body>
+</html>
