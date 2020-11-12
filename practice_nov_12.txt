@@ -1,0 +1,363 @@
+practice today_nov_12_2020
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @*//inline helper ex1 - string*@
+
+    <div>
+        @helper MyListhelper(string[] str)
+        {
+            <ul>
+                @foreach (var item in str)
+                {
+                    <li>@item</li>
+
+                }
+
+            </ul>
+        }
+
+    </div>
+
+
+
+    <div>
+
+        <label> god of cricket</label>
+        <div> @MyListhelper(new string[] { "sachin", "tendulkar" })</div>
+
+        <label> King of cricket</label>
+        <div> @MyListhelper(new string[] { "Virat", "Kohli" })</div>
+
+        <label>Cool Caption of cricket</label>
+        <div> @MyListhelper(new string[] { "Mahendra", "singh","Dhoni" })</div>
+
+
+    </div>
+
+    <div>
+
+        <label> Best friend forever</label>
+        <div> @MyListhelper(new string[] { "Rekha" })</div>
+
+        <label> college friends</label>
+        <div> @MyListhelper(new string[] { "Rainbow" })</div>
+
+        <label>hostel friend</label>
+        <div> @MyListhelper(new string[] { "Ramya" })</div>
+
+        <label> list1 of friends</label>
+        <div> @MyListhelper(new string[] { "sachin", "nikhil", "pranith" })</div>
+
+    </div>
+
+    @*//inline helper ex2 - number*@
+
+    <div>
+        @helper Mylisthelper2(int[] num)
+        {
+            <ol>
+                @foreach (var item in num)
+                {
+                    <li>@item</li>
+
+                }
+
+            </ol>
+        }
+    </div>
+
+
+    <div>
+
+        <label> natural numbers</label>
+        <div> @Mylisthelper2(new int[] { 1, 2, 3 })</div>
+
+        <div> @Mylisthelper2(new int[] { 11, 22, 33 })</div>
+
+        <div> @Mylisthelper2(new int[] { 111, 222, 333 })</div>
+
+        <div> @Mylisthelper2(new int[] { 1111, 2222, 3333 })</div>
+
+        <div> @Mylisthelper2(new int[] { 11111, 22222, 33333 })</div>
+
+    </div>
+
+    <div>
+
+        <label> birth_date </label>
+        <div> @Mylisthelper2(new int[] { 15,12,1997 })</div>
+
+    </div>
+
+
+
+
+    <div>
+        @helper helper1(int a, int b)
+        {
+            <label>addition of 2 numbers are : @(a + b)</label>
+
+            <label>difference of 2 numbers are : @(a - b)</label>
+
+            <label>product of 2 numbers are : @(a * b)</label>
+
+            <label>division of a number bu another number is : @(a % b)</label>
+
+        }
+    </div>
+
+    <div style="background-color:aqua"><label>@helper1(4,2)</label></div>
+
+    <div>
+        @helper Printhelper(string message)
+        {
+            <label>@message</label>
+
+        }
+
+
+        <div>
+
+            <label>@Printhelper("hello")</label>
+
+        </div>
+
+        <div style="background-color:gold"><label>@Printhelper("hello")</label></div>
+        <div style="background-color:greenyellow"><label>@Printhelper("welcome")</label></div>
+        <div style="background-color:orange"><label>@Printhelper("have a nice day")</label></div>
+
+
+    </div>
+
+
+
+
+
+
+</body>
+</html>
+
+
+controller file
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace mvc_helpers.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        //inline helpers of mvc helpers
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+strongly_typed
+
+index.cshtml
+
+@using strongly_typed_helpers.Models
+@model Employee
+
+@{ 
+    Layout = null;
+
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("my form"))
+        {
+            <label>Fullname</label>@Html.TextBoxFor(x => x.Name)<br /><br />
+            <label>Address</label>@Html.TextBoxFor(x => x.Address)<br /><br />
+            <label>Current user</label>@Html.CheckBoxFor(x => x.isemployee)
+        }
+
+        <input type="submit" value="submit" text="submitted">
+
+
+    </div>
+</body>
+</html>
+
+conntroller file
+using strongly_typed_helpers.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace strongly_typed_helpers.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            Employee emp = new Employee()
+            {
+                Name = "Kaumudi",
+                Address = "tumkur",
+                isemployee = true
+
+            };
+
+            return View(emp);
+                        
+        }
+        [HttpPost]
+        public ActionResult Index(Employee emp)
+        {
+            return View();
+        }
+
+    }
+}
+
+model_class
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+
+
+namespace strongly_typed_helpers.Models
+{
+    public class Employee
+    {
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public bool isemployee { get; set; }
+
+    }
+}
+
+
+
+
+index.cshtml
+
+@using strongly_typed_helpers.Models
+@model student
+
+@{ 
+    Layout = null;
+
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("my form"))
+        {
+            <label>Fullname</label>@Html.TextBoxFor(x => x.stName)<br /><br />
+            <label>Address</label>@Html.TextBoxFor(x => x.stAddress)<br /><br />
+            <label>Current user</label>@Html.CheckBoxFor(x => x.isstudent)
+        }
+
+        <input type="submit" value="submit" text="submitted">
+
+
+    </div>
+</body>
+</html>
+
+conntroller file
+using strongly_typed_helpers.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace strongly_typed_helpers.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            student stu = new student()
+            {
+                stName = "Kaumudi",
+                stAddress = "tumkur",
+                isstudent = true
+
+            };
+
+            return View(stu);
+                        
+        }
+        [HttpPost]
+        public ActionResult Index(student stu)
+        {
+            return View();
+        }
+
+    }
+}
+
+model_class
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+
+
+namespace strongly_typed_helpers.Models
+{
+    public class Student
+    {
+        public string stName { get; set; }
+        public string stAddress { get; set; }
+        public bool isstudent { get; set; }
+
+    }
+}
