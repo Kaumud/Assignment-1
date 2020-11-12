@@ -1,0 +1,143 @@
+assignment2
+
+controller file
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace assignment2_helpers.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+
+        public ViewResult RegistrationForm()
+
+        {
+
+            return View();
+
+        }
+
+        
+    }
+}
+
+
+
+index.cshtml
+
+@model assignment2_helpers.Models.Class1
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h3>Please fill the registration form by clicking on the following registration link</h3>
+        @Html.ActionLink("Registration", "RegistrationForm")
+    </div>
+</body>
+</html>
+
+
+RegistrationForm.cshtml
+
+@model assignment2_helpers.Models.Class1
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegistrationForm</title>
+</head>
+<body>
+    <div>
+
+        @using (Html.BeginForm())
+
+        {
+
+            <p>
+
+                Your UserName : @Html.TextBoxFor(x => x.UserName)
+
+            </p>
+
+            <p>
+
+                Your Password : @Html.Password("Password")
+
+            </p>
+
+            <p>
+                Your Gender :<label>Male</label> @Html.RadioButton("Gender", "Male", true, new { id = "Male" })
+                              <label>Female</label>@Html.RadioButton("Gender", "Female", true, new { id = "Female" })
+            </p>
+
+            <p>
+
+                Your Address: @Html.TextArea("Profile", new { cols = 60, rows = 10 })
+
+            </p>
+
+
+            <p>
+
+                Your Hobbies :<label>Singing</label> @Html.CheckBox("Singing")
+                              <label>Crafts</label>@Html.CheckBox("Crafts")
+
+            </p>
+
+
+            <p>
+
+                Select Courses : @Html.DropDownList("Courses", new List<SelectListItem> {
+                                   new SelectListItem {Text="Choose Courses",Value="-1" },
+                                   new SelectListItem {Text="C",Value="1" },
+                                   new SelectListItem {Text="C++",Value="2" },
+                                   new SelectListItem {Text="C#", Value="3" }
+                                   }, new { @class = "custom-select" }))
+
+            </p>
+
+
+            <p>
+                Your Skills : @Html.DropDownList("Skills", new List<SelectListItem> {
+                             new SelectListItem {Text="Choose your skills",Value="-1" },
+                             new SelectListItem {Text="C",Value="1" },
+                             new SelectListItem {Text="C++",Value="2" },
+                             new SelectListItem {Text="C#", Value="3" }
+                             }, new { @class = "custom-select" }))
+
+
+            </p>
+
+            <input type="submit" value="Register here!" />
+
+        }
+
+    </div>
+</body>
+</html>
+
