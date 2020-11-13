@@ -1,0 +1,255 @@
+
+student.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace DataAnnotaions.Models
+{
+    public class Student
+    {
+        [Key]
+        public int StudId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime EnrollDate { get; set; }
+
+
+    }
+    public class Course
+    {
+        public int CourseID { get; set; }
+
+        [ConcurrencyCheck]
+        public string Title { get; set; }
+        public int Credits { get; set; }
+        [Timestamp, DataType("timestamp")]
+        public byte[] TimeStamp { get; set; }
+
+    }
+    public class Course1
+    {
+        public int CourseID { get; set; }
+
+        [ConcurrencyCheck]
+        public string Title { get; set; }
+        public int Credits { get; set; }
+        [Timestamp, DataType("timestamp")]
+        public byte[] TimeStamp { get; set; }
+
+    }
+
+    //Required
+    public class Student1
+    {
+        [Key]
+        public int StudId { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime EnrollDate { get; set; }
+
+
+    }
+    //Maxlength
+    public class Course2
+    {
+        public int CourseID { get; set; }
+
+        [ConcurrencyCheck]
+        [MaxLength(23), MinLength(5)]
+        public string Title { get; set; }
+        public int Credits { get; set; }
+
+    }
+    //stringLength:same as maxLength
+
+
+    public class Course3
+    {
+        public int CourseID { get; set; }
+
+        [ConcurrencyCheck]
+        [MaxLength(23), StringLength(5)]
+        public string Title { get; set; }
+        public int Credits { get; set; }
+
+    }
+
+}
+
+[Table("studentInfo",Schema ="Admin")]
+public class Student
+{
+    [Key]
+    public int StudId { get; set; }
+    [ConcurrencyCheck]
+    [MaxLength(24),MinLength(3)]
+    [Required]
+    public string FirstName { get; set; }
+    [ConcurrencyCheck]
+    [MaxLength(24), MinLength(3)]
+    [Required]
+
+    public string LastName { get; set; }
+    [ConcurrencyCheck]
+    [StringLength(15)]
+    [Required]
+    [ForeignKey("enrollment id")]
+
+
+    public DateTime EnrollDate { get; set; }
+
+
+}
+
+//3.column
+public class Student1
+{
+    [Key]
+    public int StudId { get; set; }
+    [Column("FirstName")]
+    public string FirstName { get; set; }
+    [Column("LastName")]
+    public string LastName { get; set; }
+}
+
+
+
+//4.foreign key
+public class Enrollment
+{
+    public int EnrollId { get; set; }
+    public int CourseId { get; set; }
+    public int Grade { set; get; }
+    [ForeignKey("studentId")]
+    public virtual Student {set;get;}
+
+}
+
+
+about.cshtml
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>About</title>
+</head>
+<body>
+    <div> 
+        @ViewBag.name
+        @ViewBag.check
+        @ViewBag.As
+        @ViewBag.lastname
+    </div>
+</body>
+</html>
+
+
+code.cshtml
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>code</title>
+</head>
+<body>
+    <div>
+        @ViewBag.Data;
+    </div>
+</body>
+</html>
+
+
+index file
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @ViewData["name"];
+        @ViewData["check"];
+        @ViewData["As"];
+        @ViewData["lastname"];
+
+    </div>
+</body>
+</html>
+
+
+controller
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace viewdata_viewbag.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        //viewdata
+        public ActionResult Index()
+        {
+            ViewData["name"] = "Kaumudi";
+            ViewData["check"] = 1;
+            ViewData["As"] = 343;
+            ViewData["lastname"] = "lastname enter";
+            return View();
+        }
+        //viewbag
+
+        public ActionResult About()
+        {
+            ViewBag["name"] = "Kaumudi";
+            ViewBag["check"] = 1;
+            ViewBag["As"] = 343;
+            ViewBag["lastname"] = "lastname enter";
+            return View();
+        }
+
+        //temp data
+        public ActionResult Index1()//Action
+        {
+            ViewData["name"] = "Kaumudi";
+            
+            return RedirectToAction("code");
+        }
+        public ActionResult code()
+        {
+           
+            ViewBag.data = TempData["name"].ToString();
+            return View();
+
+
+        }
+    }
+}
