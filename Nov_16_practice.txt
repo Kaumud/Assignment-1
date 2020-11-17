@@ -1,0 +1,667 @@
+crud operations
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Myapp.Models
+{
+     public class AddressModel
+    {
+        public int Id { get; set; }
+        public string Details { get; set; }
+        public string State { get; set; }
+        public string Country { get; set; }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Myapp.Models;
+using MYapp.Db.DBoperations;
+
+namespace Example1.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        EmployeesRepository repository = null;
+        public HomeController()
+        {
+            repository = new EmployeesRepository();
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        public ActionResult CreateEmployee()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateEmployee(EmployeeModels model)
+        {
+            if(ModelState.IsValid)
+            {
+                int id = repository.AddEmployee(model);
+                if(id>0)
+                {
+                    ModelState.Clear();
+                    ViewBag.Issuccess = "Data Added";
+                }
+            }
+          
+            return View();
+        }
+
+        public ActionResult GetAllRecords()
+        {
+            var result = repository.GetAllEmployees();
+            return View(result);
+        }
+
+
+        public ActionResult details(int id)
+        {
+            var employee = repository.GetEmployee(id);
+            return View(employee);
+        }
+
+        public ActionResult edit(int id)
+        {
+            var employee = repository.GetEmployee(id);
+            return View(employee);
+        }
+        [HttpPost]
+        public ActionResult edit(EmployeeModels model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                repository.UpdateEmployee(model.Id, model);
+                return RedirectToAction("GetAllRecords");
+            }
+            return View();
+        }
+        public ActionResult delete(int id)
+        {
+            repository.DeleteEmployee(id);
+            return RedirectToAction("GetAllRecords");
+        }
+    }
+}
+
+
+
+@model Myapp.Models.EmployeeModels
+
+@{
+    ViewBag.Title = "CreateEmployee";
+}
+
+<h2>CreateEmployee</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Employee</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AddressId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@model Myapp.Models.EmployeeModels
+
+@{
+    ViewBag.Title = "delete";
+}
+
+<h2>delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EmployeeModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
+
+@model Myapp.Models.EmployeeModels
+
+@{
+    ViewBag.Title = "edit";
+}
+
+<h2>edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>EmployeeModels</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AddressId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+
+
+namespace Myapp.Models
+{
+     public class EmployeeModels
+    {
+        [Required]
+        public int Id { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public int? AddressId { get; set; }
+        [Required]
+        public string Code { get; set; }
+
+        public AddressModel address { get; set; }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Myapp.Models;
+
+namespace MYapp.Db.DBoperations
+{
+    public class EmployeesRepository
+    {
+        public int AddEmployee(EmployeeModels model)
+        {
+            using (var context = new EmployeeDBEntities1()) 
+            {
+                Employee emp = new Employee()
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Code = model.Code
+                };
+                context.Employee.Add(emp);
+                context.SaveChanges();
+                return emp.Id;
+            }
+        }
+
+        public List<EmployeeModels> GetAllEmployees()
+        {
+            using (var context = new EmployeeDBEntities1())
+            {
+                var result = context.Employee.Select(x => new EmployeeModels()
+                {
+                    Id = x.Id,
+                    AddressId = x.AddressId,
+                    Email = x.Email,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    Code = x.Code,
+                    address = new AddressModel()
+                    {
+                        Id = x.Address.Id,
+                        Details = x.Address.Details,
+                        Country = x.Address.Country,
+                        State = x.Address.State
+
+
+
+                    }
+
+                }).ToList();
+                return result;
+            }
+        }
+
+        public EmployeeModels GetEmployee(int id)
+        {
+            using (var context = new EmployeeDBEntities1())
+            {
+                var result = context.Employee.Where(x => x.Id == id).Select(x => new EmployeeModels()
+                {
+                    Id = x.Id,
+                    AddressId = x.AddressId,
+                    Email = x.Email,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    Code = x.Code,
+                    address = new AddressModel()
+                    {
+                        Id = x.Address.Id,
+                        Details = x.Address.Details,
+                        Country = x.Address.Country,
+                        State = x.Address.State
+
+
+
+                    }
+
+                }).FirstOrDefault();
+                return result;
+            }
+        }
+
+        public bool UpdateEmployee(int id,EmployeeModels model)
+        {
+            using (var context = new EmployeeDBEntities1())
+            {
+                var employee = context.Employee.FirstOrDefault(x => x.Id == id);
+                if(employee!=null)
+                {
+                    employee.FirstName = model.FirstName;
+                    employee.LastName = model.LastName;
+                    employee.Email = model.Email;
+                    employee.Code = model.Code;
+                }
+                context.SaveChanges();
+                return true;
+            }
+        }
+
+        public bool DeleteEmployee(int id)
+        {
+            using (var context = new EmployeeDBEntities1())
+            {
+                var employee = context.Employee.FirstOrDefault(x => x.Id == id);
+                if (employee != null)
+                {
+                    context.Employee.Remove(employee);
+                    context.SaveChanges();
+                    return true;
+                }
+                return false;
+                
+            }
+        }
+
+
+
+
+    }
+}
+
+
+
+@model Myapp.Models.EmployeeModels
+
+@{
+    ViewBag.Title = "delete";
+}
+
+<h2>delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EmployeeModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
+
+
+@model IEnumerable<Myapp.Models.EmployeeModels>
+
+@{
+    ViewBag.Title = "GetAllRecords";
+}
+
+<h2>GetAllRecords</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address.Details)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address.Details)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+
+web config code
+
+<customErrors mode="On"></customErrors>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace example2errors.Controllers
+{
+    public class ErrorController : Controller
+    {
+        // GET: Error
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace example2errors.Controllers
+{
+    [HandleError]
+    public class HomeController : Controller
+    {
+        // GET: Home
+        
+        public ActionResult Index1()
+        {
+            throw new Exception("this is a exception");
+        }
+
+        public ActionResult About()
+        {
+            throw new Exception("this is a exception");
+        }
+    }
+}
+
+
+
+@{
+    ViewBag.Title = "Error";
+}
+<h2>Error</h2>
+
+<h2>Something Went Wrong</h2>
+
+
+
+
+
+
+
+
