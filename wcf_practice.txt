@@ -1,0 +1,490 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace AssignmentCalcs
+{
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "CalcAsmnt" in code, svc and config file together.
+	// NOTE: In order to launch WCF Test Client for testing this service, please select CalcAsmnt.svc or CalcAsmnt.svc.cs at the Solution Explorer and start debugging.
+	public class CalcAsmnt : Symbols
+	{
+		public int Greater(int num1, int num2)
+		{
+			if (num1 > num2)
+			{
+				return num1;//greater than
+			}
+			else
+			{
+				return 0;
+			}
+		}
+
+		public int Lesser(int num1, int num2)
+		{
+			if (num1 < num2)
+			{
+				return num1;//lesser than
+			}
+			else
+			{
+				return 0;
+			}
+		}
+
+		public int EqualTo(int num1, int num2)
+		{
+			if (num1 == num2)
+			{
+				return num1+num2 ;//equality check
+			}
+			else
+			{
+				return 0;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+palindrome
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace Wcfpalindrome
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "Ipalindrome" in both code and config file together.
+    [ServiceContract]
+    public interface Ipalindrome
+    {
+        [OperationContract]
+        // void DoWork();
+        string pal(string s1, string rev);
+    }
+}
+
+public class pal
+{
+    [DataMember]
+    public string s1;
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace Wcfpalindrome
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "palindrome" in both code and config file together.
+    public class palindrome : IPalindrome
+    {
+        public string pal(string s1,string rev)
+        {
+            for(int i=s1.Length-1;i>=0;i--)
+            {
+                rev += s1[i];
+            }
+            if(s1==rev)
+            {
+                return "palindrome";
+            }
+            else
+            {
+                return "not palindrome";
+            }
+        }
+    }
+}
+
+
+odd number
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace AssignmentCalcs
+{
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IOddNo" in both code and config file together.
+	[ServiceContract]
+	public interface IOddNo
+	{
+		[OperationContract]
+		int num(int num1);
+	}
+
+	
+}
+[DataContract]
+
+public class CompositeTechnology
+{
+	bool val = true;
+	String strval = "Kaumudi";
+
+	[DataMember]
+	public bool value
+	{
+		get { return value; }
+		set { val = value; }
+	}
+
+	[DataMember]
+	public string stringValue
+	{
+		get { return strval; }
+		set { strval = value; }
+	}
+
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace AssignmentCalcs
+{
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "OddNo" in code, svc and config file together.
+	// NOTE: In order to launch WCF Test Client for testing this service, please select OddNo.svc or OddNo.svc.cs at the Solution Explorer and start debugging.
+	public class OddNo : IOddNo
+	{
+		public int num(int num1)
+		{
+
+			
+			if (num1 % 2 != 0)
+			{
+				return num1;
+			}
+
+			else
+			{
+				return 0;
+			}
+		}
+	}
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace AssignmentCalcs
+{
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "ISentence" in both code and config file together.
+	[ServiceContract]
+	public interface ISentence
+	{
+		[OperationContract]
+		string Sentencess(string s1,string s2,string s3);
+	}
+}
+
+[DataContract]
+public class Sentence
+{
+	
+	bool val = true;
+	String strval = "Kaumudi";
+
+	[DataMember]
+	public bool value
+	{
+		get { return value; }
+		set { val = value; }
+	}
+
+	[DataMember]
+	public string stringValue
+	{
+		get { return strval; }
+		set { strval = value; }
+	}
+
+}
+
+
+
+prime number
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace AssignmentCalcs
+{
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IPrimeNo" in both code and config file together.
+	[ServiceContract]
+	public interface IPrimeNo
+	{
+		[OperationContract]
+		string Prime(int a, int b, int j);
+	}
+}
+
+[DataContract]
+
+public class Prime
+{
+	[DataMember]
+	public int a;
+
+	[DataMember]
+	public int b;
+
+	[DataMember]
+	public int j;
+
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace AssignmentCalcs
+{
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "PrimeNo" in code, svc and config file together.
+	// NOTE: In order to launch WCF Test Client for testing this service, please select PrimeNo.svc or PrimeNo.svc.cs at the Solution Explorer and start debugging.
+	public class PrimeNo : IPrimeNo
+	{
+		public string Prime(int a,int b, int j)
+		{
+			for ( j = 1; j <= b; j++)
+			{
+				if (b % j == 0)
+				{
+					a++;
+				}
+			}
+
+			if (a == 2)
+			{
+				return "It is a Prime Numbers";
+			}
+
+			else
+			{
+				return "It is not a Prime Numbers";
+			}
+		}
+	}
+}
+
+
+reverse no
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace Reverse
+{
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IReverse" in both code and config file together.
+	[ServiceContract]
+	public interface IReverse
+	{
+		[OperationContract]
+		int Reverse(int num, int rem, int rev = 0);
+	}
+}
+
+[DataContract]
+public class ReverseNo
+{
+	[DataMember]
+	public int num;
+
+	[DataMember]
+	public int rem;
+
+	[DataMember]
+	public int rev;
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace Reversecs
+{
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Reverse" in code, svc and config file together.
+	// NOTE: In order to launch WCF Test Client for testing this service, please select Reverse.svc or Reverse.svc.cs at the Solution Explorer and start debugging.
+	public class Reverse : IReverse
+	{
+		public int ReverseNos(int num, int rem, int rev = 0)
+		{
+			while (num != 0)
+			{
+				rem = num % 10;
+				rev = rev * 10 + rem;
+				num /= 10;
+			}
+
+
+			if (num != rev)
+			{
+				return rev;
+			}
+
+			else
+			{
+				return 0;
+			}
+			
+		}
+	}
+}
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace AssignmentCalcs
+{
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "ISentence" in both code and config file together.
+	[ServiceContract]
+	public interface ISentence
+	{
+		[OperationContract]
+		string Sentencess(string s1,string s2,string s3);
+	}
+}
+
+[DataContract]
+public class Sentence
+{
+	[DataMember]
+	public string s1;
+
+	[DataMember]
+	public string s2;
+
+	[DataMember]
+	public string s3;
+
+	
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace AssignmentCalcs
+{
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Sentence" in code, svc and config file together.
+	// NOTE: In order to launch WCF Test Client for testing this service, please select Sentence.svc or Sentence.svc.cs at the Solution Explorer and start debugging.
+	public class Sentence : ISentence
+	{
+		public Sentence(string s1, string s2, string s3)
+		{
+			return (s1 + s2 + s3);
+		}
+	}
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
+
+namespace AssignmentCalcs
+{
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
+	[ServiceContract]
+	public interface IService1
+	{
+
+		[OperationContract]
+		string GetData(int value);
+
+		[OperationContract]
+		CompositeType GetDataUsingDataContract(CompositeType composite);
+
+		// TODO: Add your service operations here
+	}
+
+
+	// Use a data contract as illustrated in the sample below to add composite types to service operations.
+	[DataContract]
+	public class CompositeType
+	{
+		bool boolValue = true;
+		string stringValue = "Hello ";
+
+		[DataMember]
+		public bool BoolValue
+		{
+			get { return boolValue; }
+			set { boolValue = value; }
+		}
+
+		[DataMember]
+		public string StringValue
+		{
+			get { return stringValue; }
+			set { stringValue = value; }
+		}
+	}
+}
