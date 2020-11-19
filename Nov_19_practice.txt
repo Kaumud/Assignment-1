@@ -1,0 +1,1044 @@
+hidden examples
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="hidden1.aspx.cs" Inherits="WebApplication1.hidden1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+
+            <asp:HiddenField ID ="HiddenFieldDemo" runat ="server"/>
+            <label id ="lblTime" runat="server"></label>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class hidden1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            HiddenFieldDemo.Value = DateTime.Now.ToString();
+            lblTime.InnerText= Convert.ToString(HiddenFieldDemo.Value);
+        }
+    }
+}
+
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="hidden2.aspx.cs" Inherits="WebApplication1.hidden2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:HiddenField ID="hiddenField" runat="server"/>
+            <asp:Button ID="button" runat="server" Text="Hiddenvalue" onclick="button_Click" />
+
+            <br />
+            <br />
+            <br />
+
+            <asp:Label  ID="label" runat="server" Font-Bold="True" ForeColor="#000099"/>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class hidden2 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void button_Click(object sender, EventArgs e)
+        {
+            if(hiddenField.Value ==String.Empty)
+                hiddenField.Value = "101";
+                hiddenField.Value = (Convert.ToInt32(hiddenField.Value)- 1).ToString();
+            label.Text = hiddenField.Value;
+        }
+    }
+}
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Button ID="btnShow" runat="server" Text="Show" onclick="btnShow_Click"  />       
+
+            <asp:HiddenField ID="hf1" runat="server" Value="warm welcome" OnValueChanged="hf1_ValueChanged" />
+
+            <asp:Label ID="label1" runat="server"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void hf1_ValueChanged(object sender, EventArgs e)
+        {
+            hf1.Value = DateTime.Now.ToString();
+            label1.Text = Convert.ToString(hf1.Value);
+        }
+    }
+}
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Button ID="btnShow" runat="server" Text="Show" onclick="btnShow_Click"  />       
+
+            <asp:HiddenField ID="H1" runat="server" Value="warm welcome" OnValueChanged="hf1_ValueChanged" />
+
+            <asp:Label ID="label1" runat="server"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void hf1_ValueChanged(object sender, EventArgs e)
+        {
+            H1.Value = 12345
+            Label.Text = Convert.ToString(H1.Value);
+        }
+    }
+}
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Button ID="btnShow" runat="server" Text="Show" onclick="btnShow_Click"  />       
+
+            <asp:HiddenField ID="H1" runat="server" Value="warm welcome" OnValueChanged="hf1_ValueChanged" />
+
+            <asp:Label ID="label1" runat="server"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void hf1_ValueChanged(object sender, EventArgs e)
+        {
+            H1.Value=fdxffvcc656656
+            Label.Text = Convert.ToString(H1.Value);
+        }
+    }
+}
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Querystring example
+
+
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication3.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            width: 236px;
+        }
+        .auto-style3 {
+            width: 169px;
+        }
+        .auto-style5 {
+            width: 169px;
+            height: 56px;
+        }
+        .auto-style6 {
+            width: 236px;
+            height: 56px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <br />
+            <br />
+            <table style="border:1px solid;background-color:lavenderblush">
+                <tr>
+                    <td class="auto-style3">Usename</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">Password</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">
+                        <asp:Button ID="Button1" runat="server" Text="Login" OnClick="Button1_Click" />
+                        <asp:Button ID="Button2" runat="server" Text="reset" OnClick="Button2_Click" />
+                    </td>
+                    <td>
+                        <asp:Label ID="Label1" runat="server" ForeColor="#FF3300"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication3
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack) TextBox1.Focus();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (TextBox1.Text == "admin" && TextBox2.Text == "admin")
+            {
+                Response.Write("login successfull");
+                Response.Redirect("Homepage.aspx?Name=" + TextBox1.Text+ "&pwd="+TextBox2.Text);
+            }
+               
+            else
+                Label1.Text = "Invalid login credentials";
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
+
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="WebApplication3.Homepage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+
+        
+        </div>
+    </form>
+</body>
+</html>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication3
+{
+    public partial class Homepage : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            string name = Request.QueryString["Name"];
+            Response.Write("hello  "+name+" welcome to our site");
+        }
+    }
+}
+
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="querystring2.aspx.cs" Inherits="WebApplication1.querystring2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            width: 259px;
+        }
+        .auto-style3 {
+            width: 36px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table style="width:100%;">
+                <tr>
+                    <td class="auto-style3">Firstname</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">Lastname</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Send" />
+                    </td>
+                    <td class="auto-style2">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class querystring2 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+
+            Response.Redirect("NextPage.aspx?FirstName=" + TextBox1.Text + "LastName=" + TextBox2.Text);
+        }
+    }
+}
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NextPage.aspx.cs" Inherits="WebApplication1.NextPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label runat="server" ID="label1"></asp:Label>
+            <asp:Label runat="server" ID="label2"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class NextPage : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            label1.Text = "welcome  " + Request.QueryString["firstName"].ToString() + Request.QueryString["LastName"].ToString();
+        }
+    }
+}<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="querystring2.aspx.cs" Inherits="WebApplication1.querystring2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            width: 259px;
+        }
+        .auto-style3 {
+            width: 36px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table style="width:100%;">
+                <tr>
+                    <td class="auto-style3">Firstname</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">Lastname</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Send" />
+                    </td>
+                    <td class="auto-style2">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class querystring2 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+
+            Response.Redirect("NextPage.aspx?FirstName=" + TextBox1.Text + "LastName=" + TextBox2.Text);
+        }
+    }
+}
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NextPage.aspx.cs" Inherits="WebApplication1.NextPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label runat="server" ID="label1"></asp:Label>
+            <asp:Label runat="server" ID="label2"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class NextPage : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            label1.Text = "welcome  " + Request.QueryString["firstName"].ToString() + Request.QueryString["LastName"].ToString();
+        }
+    }
+}
+
+
+
+<%@ Page Language="C#" %>
+
+<!DOCTYPE html>
+
+<script runat="server">
+
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>asp.net QueryString example: how to use QueryString</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <h2 style="color:Navy">QueryString Example</h2>
+        <asp:HyperLink 
+            ID="HyperLink1"
+            runat="server"
+            NavigateUrl="~/Image.aspx?ImageID=1&ImageName=Elephant"
+            Text="Test QueryString"
+            >
+        </asp:HyperLink>
+    </div>
+    </form>
+</body>
+</html>
+Image.aspx
+
+<%@ Page Language="C#" %>
+
+<!DOCTYPE html>
+
+<script runat="server">
+    protected void Page_Load(object sender, System.EventArgs e) {
+        string ID = Request.QueryString["ImageID"];
+        string Name = Request.QueryString["ImageName"];
+        Label1.Text = "ImageID: "+ ID;
+        Label2.Text = "Image name: "+ Name;
+        Image1.ImageUrl = "~/Images/"+Name+".jpg";
+    }
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>asp.net QueryString example</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <h2 style="color:Red">QueryString Example: Image View</h2>
+        <asp:Label 
+            ID="Label1"
+            runat="server"
+            Font-Size="Large"
+            ForeColor="SeaGreen"            
+            >
+        </asp:Label>
+        <br />
+        <asp:Label 
+            ID="Label2"
+            runat="server"
+            Font-Size="Large"
+            ForeColor="SeaGreen"            
+            >
+        </asp:Label>
+        <br />
+        <asp:Image ID="Image1" runat="server" />
+    </div>
+    </form>
+</body>
+</html>
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="querystring2.aspx.cs" Inherits="WebApplication1.querystring2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            width: 259px;
+        }
+        .auto-style3 {
+            width: 36px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table style="width:100%;">
+                <tr>
+                    <td class="auto-style3">Name</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">City</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Send" />
+                    </td>
+                    <td class="auto-style2">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class querystring2 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+
+            Response.Redirect("NextPage.aspx?Name=" + TextBox1.Text + "city=" + TextBox2.Text);
+        }
+    }
+}
+
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NextPage.aspx.cs" Inherits="WebApplication1.NextPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label runat="server" ID="label1"></asp:Label>
+            <asp:Label runat="server" ID="label2"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class NextPage : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            label1.Text = "welcome  " + Request.QueryString["Name"].ToString();
+            label2.Text = "Belongs to" + Request.QueryString["city"].ToString();
+        }
+    }
+}
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="querystring2.aspx.cs" Inherits="WebApplication1.querystring2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            width: 259px;
+        }
+        .auto-style3 {
+            width: 36px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table style="width:100%;">
+                <tr>
+                    <td class="auto-style3">Name</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">City</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Send" />
+                    </td>
+                    <td class="auto-style2">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class querystring2 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NextPage.aspx?Name=" + TextBox1.Text);
+        }
+    }
+}
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NextPage.aspx.cs" Inherits="WebApplication1.NextPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label runat="server" ID="label1"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class NextPage : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            label1.Text = "welcome  " + Request.QueryString["Name"].ToUpper();
+        }
+    }
+}
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication3.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            width: 236px;
+        }
+        .auto-style3 {
+            width: 169px;
+        }
+        .auto-style5 {
+            width: 169px;
+            height: 56px;
+        }
+        .auto-style6 {
+            width: 236px;
+            height: 56px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <br />
+            <br />
+            <table style="border:1px solid;background-color:lavenderblush">
+                <tr>
+                    <td class="auto-style3">Usename</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">Password</td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">
+                        <asp:Button ID="Button1" runat="server" Text="Login" OnClick="Button1_Click" />
+                        <asp:Button ID="Button2" runat="server" Text="reset" OnClick="Button2_Click" />
+                    </td>
+                    <td>
+                        <asp:Label ID="Label1" runat="server" ForeColor="#FF3300"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication3
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack) TextBox1.Focus();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (TextBox1.Text == "admin" && TextBox2.Text == "admin")
+            {
+                Response.Write("login successfull");
+                Response.Redirect("Homepage.aspx?Name=" + TextBox1.Text+ "&pwd="+TextBox2.Text);
+            }
+               
+            else
+                Label1.Text = "Invalid login credentials";
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
+
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="WebApplication3.Homepage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+
+        
+        </div>
+    </form>
+</body>
+</html>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication3
+{
+    public partial class Homepage : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            string name = Request.QueryString["Name"];
+            Response.Write("hello  "+name+" welcome to our site");
+        }
+    }
